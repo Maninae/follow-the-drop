@@ -1,0 +1,169 @@
+/* ============================================================
+   Scene stage: full-bleed illustration, hotspots, fact cards,
+   and the blur-crossfade transition between scenes.
+   ============================================================ */
+
+.stage {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.scene-image-wrap {
+  position: absolute;
+  inset: 0;
+  transition: filter 0.55s ease, opacity 0.55s ease, transform 0.55s ease;
+  filter: blur(0) brightness(1);
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Leaving: melt into a watery blur */
+.scene-image-wrap.leaving {
+  filter: blur(18px) brightness(1.15);
+  opacity: 0;
+  transform: scale(1.06);
+}
+
+/* Entering starts blurred and sharpens */
+.scene-image-wrap.entering {
+  filter: blur(18px) brightness(1.15);
+  opacity: 0;
+  transform: scale(1.06);
+  transition: none;
+}
+
+.scene-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Gentle vignette so panels read against any image */
+.scene-image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(20, 28, 18, 0.55), transparent 38%),
+    linear-gradient(to bottom, rgba(20, 28, 18, 0.30), transparent 22%);
+}
+
+/* ---------- Hotspots ---------- */
+
+.hotspot-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.hotspot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(247, 239, 220, 0.25);
+  border: 3px solid rgba(247, 239, 220, 0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35), inset 0 0 12px rgba(255, 255, 255, 0.5);
+  display: grid;
+  place-items: center;
+  font-size: 19px;
+  color: #fff7ea;
+  font-family: var(--font-display);
+  font-weight: 800;
+  animation: hotspot-pulse 2.2s ease-in-out infinite;
+  transition: transform 0.15s ease, background 0.15s ease;
+  z-index: 3;
+}
+.hotspot:hover, .hotspot:focus-visible {
+  transform: translate(-50%, -50%) scale(1.18);
+  background: rgba(240, 176, 58, 0.55);
+  animation-play-state: paused;
+}
+.hotspot.seen {
+  border-style: dashed;
+  animation: none;
+  background: rgba(62, 107, 78, 0.45);
+}
+
+@keyframes hotspot-pulse {
+  0%, 100% { box-shadow: 0 2px 10px rgba(0,0,0,0.35), 0 0 0 0 rgba(247, 239, 220, 0.65); }
+  50%      { box-shadow: 0 2px 10px rgba(0,0,0,0.35), 0 0 0 14px rgba(247, 239, 220, 0); }
+}
+
+/* Tiny label that rides along under each hotspot */
+.hotspot-tag {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  color: #fff7ea;
+  background: rgba(46, 58, 44, 0.78);
+  padding: 3px 10px;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+/* ---------- Fact card popover ---------- */
+
+.fact-card {
+  position: fixed;
+  z-index: 40;
+  width: min(340px, calc(100vw - 32px));
+  background: var(--paper) var(--grain);
+  border: 2px solid var(--paper-edge);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 18px 20px 20px;
+  animation: fact-pop 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.fact-card[hidden] { display: none; }
+
+@keyframes fact-pop {
+  from { opacity: 0; transform: scale(0.85) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.fact-eyebrow {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clay);
+}
+
+.fact-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 21px;
+  margin: 4px 0 6px;
+  color: var(--pine-deep);
+}
+
+.fact-body {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.fact-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  padding: 4px 6px;
+}
+.fact-close:hover { color: var(--clay); }

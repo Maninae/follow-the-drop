@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Follow the Drop — A Water Cycle Adventure</title>
+  <meta name="description" content="Be a drop of water! Follow the Drop is a choose-your-own-path adventure through the water cycle for young explorers.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' font-size='80'>💧</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Andika:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/scene.css">
+  <link rel="stylesheet" href="css/panels.css">
+</head>
+<body>
+
+  <!-- The scene stage: full-bleed illustration + hotspots -->
+  <main id="stage" class="stage" aria-live="polite">
+    <div id="scene-image-wrap" class="scene-image-wrap">
+      <img id="scene-image" class="scene-image" src="" alt="">
+      <div id="hotspot-layer" class="hotspot-layer"></div>
+    </div>
+  </main>
+
+  <!-- Trail sign header -->
+  <header class="trailhead">
+    <div class="trailhead-sign">
+      <span class="trailhead-drop">💧</span>
+      <span class="trailhead-title">Follow the Drop</span>
+    </div>
+    <button id="passport-button" class="passport-button" aria-label="Open your water passport">
+      <span class="passport-icon">📖</span>
+      <span id="passport-count" class="passport-count">0 / 14</span>
+      <span class="passport-label">My Passport</span>
+    </button>
+  </header>
+
+  <!-- Story panel: title, read-aloud text, choices -->
+  <section id="story-panel" class="story-panel">
+    <div class="story-card">
+      <div class="story-heading">
+        <span id="scene-emoji" class="scene-emoji"></span>
+        <h1 id="scene-title" class="scene-title"></h1>
+        <button id="read-aloud" class="read-aloud" aria-label="Read this page out loud">🔊</button>
+      </div>
+      <p id="scene-body" class="scene-body"></p>
+      <div class="choices">
+        <div id="back-choices" class="choice-group choice-group-back"></div>
+        <div id="next-choices" class="choice-group choice-group-next"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fact card popover (one at a time) -->
+  <div id="fact-card" class="fact-card" hidden>
+    <button id="fact-close" class="fact-close" aria-label="Close">✕</button>
+    <div class="fact-eyebrow">Look closer!</div>
+    <h2 id="fact-title" class="fact-title"></h2>
+    <p id="fact-body" class="fact-body"></p>
+  </div>
+
+  <!-- Passport modal -->
+  <div id="passport-modal" class="passport-modal" hidden>
+    <div class="passport-book">
+      <button id="passport-close" class="passport-close" aria-label="Close passport">✕</button>
+      <h2 class="passport-title">My Water Passport</h2>
+      <p class="passport-subtitle">Collect a stamp from every place your drop visits!</p>
+      <div id="stamp-grid" class="stamp-grid"></div>
+    </div>
+  </div>
+
+  <!-- First-visit intro -->
+  <div id="intro" class="intro" hidden>
+    <div class="intro-card">
+      <div class="intro-drop">💧</div>
+      <h2 class="intro-title">You are a drop of water!</h2>
+      <p class="intro-body">Today you get to ride the water cycle. Fall as rain, race down rivers, hide underground, visit a kitchen sink, and float back to the clouds. Tap the glowing circles to look closer, and choose where your drop goes next!</p>
+      <button id="intro-start" class="intro-start">Start my journey</button>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/narrate.js"></script>
+  <script src="js/passport.js"></script>
+  <script src="js/transitions.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
