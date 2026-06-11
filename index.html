@@ -17,8 +17,13 @@
 
   <!-- The scene stage: full-bleed illustration + hotspots -->
   <main id="stage" class="stage" aria-live="polite">
-    <div id="scene-image-wrap" class="scene-image-wrap">
-      <img id="scene-image" class="scene-image" src="" alt="">
+    <div id="scene-layer-a" class="scene-layer front">
+      <img class="scene-image" src="" alt="">
+    </div>
+    <div id="scene-layer-b" class="scene-layer">
+      <img class="scene-image" src="" alt="">
+    </div>
+    <div id="overlay-layer" class="overlay-layer">
       <div id="hotspot-layer" class="hotspot-layer"></div>
       <div id="nav-layer" class="hotspot-layer"></div>
     </div>

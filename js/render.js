@@ -2,13 +2,10 @@
 // and choice buttons. Stateless — main.js owns state and passes
 // callbacks for navigation and hotspot taps.
 
+// Renders everything EXCEPT the scene image, which is owned by
+// transitions.js (it crossfades between two stacked image layers).
 function renderScene(sceneId, callbacks) {
   const scene = SCENES[sceneId];
-
-  // Image
-  const img = document.getElementById("scene-image");
-  img.src = scene.image;
-  img.alt = scene.title + " — an illustrated scene from the water cycle";
 
   // Story panel
   document.getElementById("scene-emoji").textContent = scene.emoji;

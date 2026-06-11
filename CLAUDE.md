@@ -24,9 +24,9 @@ drift toward generic flat dashboards or dark techy themes.
 | `css/scene.css` | Stage + scene image, hotspots, fact-card popover, blur-crossfade transition classes |
 | `css/panels.css` | Header, story panel + choices, passport modal, intro overlay, mobile breakpoints |
 | `js/data.js` | THE CONTENT. `SCENES` graph, `START_SCENE`, `SCENE_ORDER` |
-| `js/main.js` | Coordinator: owns state (current scene, visited set), wires all events |
-| `js/render.js` | Stateless DOM rendering: scene, hotspots, choices, fact card placement |
-| `js/transitions.js` | Blur-crossfade between scenes, image preloading |
+| `js/main.js` | Coordinator: owns state (current scene, visited set), wires all events. The URL hash (`#river`) is the source of truth for the current scene — clicks set the hash, a single `hashchange` handler performs the swap, so browser back/forward walk the journey and scenes are deep-linkable |
+| `js/render.js` | Stateless DOM rendering: hotspots, signs, story panel, fact card placement (NOT the scene image — transitions.js owns that) |
+| `js/transitions.js` | Watery crossfade between two stacked image layers (incoming fades in over the outgoing scene — an interpolation, never black), image preloading |
 | `js/passport.js` | Visited-scene persistence (localStorage) + stamp book rendering |
 | `js/narrate.js` | Read-aloud via Web Speech API |
 | `assets/scenes/*.svg` | One illustration per scene, 1536×768 viewBox |

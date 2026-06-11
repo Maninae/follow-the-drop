@@ -2,7 +2,11 @@
 // and wires every UI event. Other modules are stateless helpers.
 
 (function () {
-  let currentSceneId = START_SCENE;
+  // The URL hash is the source of truth for the current scene, so the
+  // browser's back/forward buttons walk the drop's actual journey and
+  // any scene is deep-linkable (e.g. .../#river).
+  const initialHash = window.location.hash.slice(1);
+  let currentSceneId = SCENES[initialHash] ? initialHash : START_SCENE;
   const visited = passportLoad();
 
   const callbacks = {
@@ -10,17 +14,33 @@
     onHotspot: showFactCard
   };
 
+  // User-initiated navigation just moves the hash; onHashChange does
+  // the actual scene swap (so back/forward take the same code path).
   function navigateTo(sceneId) {
+    if (!SCENES[sceneId] || sceneId === currentSceneId || isTransitioning()) return;
+    window.location.hash = sceneId;
+  }
+
+  function onHashChange() {
+    const sceneId = window.location.hash.slice(1);
     if (!SCENES[sceneId] || sceneId === currentSceneId) return;
+    if (isTransitioning()) {
+      // A transition is mid-flight (e.g. back pressed during one);
+      // re-check once it has settled.
+      setTimeout(onHashChange, 650);
+      return;
+    }
     hideFactCard();
     narrateStop();
     setSpeaking(false);
-    transitionTo(SCENES[sceneId].image, function () {
+    transitionTo(SCENES[sceneId], function () {
       currentSceneId = sceneId;
       renderScene(sceneId, callbacks);
       stamp(sceneId);
     });
   }
+
+  window.addEventListener("hashchange", onHashChange);
 
   function stamp(sceneId) {
     const isNew = passportVisit(visited, sceneId);
@@ -79,6 +99,8 @@
 
   // --- First paint ---
 
+  history.replaceState(null, "", "#" + currentSceneId);
+  stageInit(SCENES[currentSceneId]);
   renderScene(currentSceneId, callbacks);
   passportUpdateCounter(visited);
   if (visited.size === 0) {
