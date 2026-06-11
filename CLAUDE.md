@@ -28,7 +28,11 @@ drift toward generic flat dashboards or dark techy themes.
 | `js/render.js` | Stateless DOM rendering: hotspots, signs, story panel, fact card placement (NOT the scene image — transitions.js owns that) |
 | `js/transitions.js` | Watery crossfade between two stacked image layers (incoming fades in over the outgoing scene — an interpolation, never black), image preloading |
 | `js/passport.js` | Visited-scene persistence (localStorage) + stamp book rendering |
+| `js/journal.js` | Explorer's Journal: fog-of-war map (SVG), quest definitions + checks, journey log + odometer (localStorage) |
+| `js/effects.js` | Ambient particle layers per scene (rain/snow/mist/bubbles/sparkle/storm) |
 | `js/narrate.js` | Read-aloud via Web Speech API |
+| `css/journal.css` | Journal modal + tabs + map + quests, state badge, gust button, long-ago chip, toast |
+| `css/effects.css` | Particle animations + lightning flash |
 | `assets/scenes/*.svg` | One illustration per scene, 1536×768 viewBox |
 | `build/regenerate-images.py` | Optional: repaint scenes as AI-generated gouache PNGs (see header) |
 
@@ -59,8 +63,17 @@ The graph is a cycle: nature loop (cloud → rain/snow → land → river →
 lake/ocean → evaporation → cloud) plus a human loop (river/groundwater →
 treatment → tap → drain → wastewater → river, with a storm-runoff
 shortcut drain → river that is deliberately untreated — a real-world
-teaching point). Every scene must remain reachable and must have at
+teaching point). Side adventures: thunderstorm (cloud↔rain), beaver dam
+(meadow → river/groundwater), the underground chain (groundwater →
+cave → geyser → cloud), and "Inside You!" (tap → you →
+evaporation/drain). Every scene must remain reachable and must have at
 least one `next` so the journey never dead-ends.
+
+Each scene also carries: `state` (liquid/ice/vapor — drives the header
+badge and the Shape Shifter quest), `effect` (ambient particle layer:
+rain/snow/mist/bubbles/sparkle/storm or null), `residence`
+({label, years} — the odometer adds `years` per visit), and `longAgo`
+(the gold time-travel fact behind the ⏳ chip).
 
 ## Adding a scene
 

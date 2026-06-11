@@ -121,6 +121,39 @@ PROMPTS = {
         "earth and exit off the right edge, blue water flowing right inside "
         "them. No dead ends, no extra pipes."
     ),
+    "thunderstorm": (
+        "A dramatic towering thundercloud over a green valley: a huge "
+        "anvil-shaped dark storm cloud filling the upper sky, one bright "
+        "lightning bolt striking down on the left, and a heavy gray curtain "
+        "of rain falling on the right side of the valley. Distant trees "
+        "bending in the wind. Thrilling but not scary."
+    ),
+    "beaver": (
+        "A beaver dam of crisscrossed sticks and mud across a small forest "
+        "stream: the stick dam center-right with water trickling over its "
+        "top, a calm pond behind it on the left with a rounded beaver lodge "
+        "mound, and a beaver swimming carrying a branch. Ducks near reeds, "
+        "golden afternoon light."
+    ),
+    "cave": (
+        "An underground crystal cave lit by a soft blue-teal glow: "
+        "stalactites dripping single drops, stalagmites rising from the "
+        "floor, a clear turquoise pool in the lower middle, and a small "
+        "warmly glowing passage on the right. Magical, quiet, secret mood."
+    ),
+    "geyser": (
+        "A tall white geyser erupting in a golden geothermal basin: a column "
+        "of steam blasting high at the center, a colorful orange-and-"
+        "turquoise hot spring pool in the left foreground, pale mineral "
+        "terraces around, pine forest at the edges. Awe and wonder."
+    ),
+    "you": (
+        "A friendly picture-book science diagram of a cheerful child "
+        "drinking water, soft side-view cutaway: water flows down to a round "
+        "friendly tummy, and simple subway-map tube paths carry tiny blue "
+        "droplets toward the arms and legs. One sweat drop on the forehead. "
+        "Soft pastels, simple rounded shapes, not realistic anatomy."
+    ),
     "wastewater": (
         "A friendly wastewater treatment plant on a green riverside: a big "
         "pipe arrives from the left with murky gray-blue water, pouring into "

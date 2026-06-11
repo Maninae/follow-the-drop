@@ -13,21 +13,29 @@ clean and comes back.
 
 ## What's inside
 
-- **14 illustrated scenes** in a national-park-sign storybook style —
-  clouds, glaciers, meadows, aquifers, rivers, the ocean, and the human
-  side too: the treatment plant, the kitchen tap, the pipes under the street
-- **A directed graph, not a list** — go forward ("where does it go?") or
-  backward ("where did it come from?"); the cycle never ends, just like
-  the real one
-- **Tap-to-discover hotspots** — glowing circles hide real facts about
-  herons, aquifers, snowflakes, and water towers
-- **A Water Passport** — collect a stamp for every place your drop visits
-- **Read-aloud button** on every page for pre-readers
-- Watery blur transitions between scenes
+- **20 illustrated scenes** in a national-park-sign storybook style —
+  thunderstorms, glaciers, beaver dams, crystal caves, geysers, the open
+  ocean, and the human side too: the treatment plant, the kitchen tap,
+  the pipes under the street… and a trip through a kid who drinks you
+- **A directed graph, not a list** — choices are trail signs planted in
+  the scene itself; go forward ("where does it go?") or backward ("where
+  did it come from?"); the cycle never ends, just like the real one
+- **An Explorer's Journal** — a fog-of-war trail map that fills in as
+  you wander, quest badges (Shape Shifter, Deep Diver, Round and
+  Round…), a stamp for every place, and a drop odometer counting the
+  years your drop has been traveling
+- **Tap-to-discover hotspots** — glowing circles hide real facts, plus a
+  golden "⏳ Long ago…" story in every scene (the water you drink really
+  did rain on dinosaurs)
+- **Living scenes** — drifting rain, snow, mist, bubbles, and lightning
+  flashes; your drop's state (💧/❄️/💨) changes as you travel
+- **Read-aloud button** on every page for pre-readers, watery crossfade
+  transitions, browser back/forward retraces your journey, and a 🌬️
+  wind-gust button when you can't decide
 
 ## The map
 
-Fifteen scenes in one connected cycle — the nature loop, plus the human
+Twenty scenes in one connected cycle — the nature loop, plus the human
 water loop that borrows from the river and gives it back
 (forward edges shown; most are also walkable backward in-game):
 
@@ -48,6 +56,11 @@ flowchart TD
     tap["🚰 Water at Home"]
     drain["🕳️ Down the Drain"]
     wastewater["🫧 The Big Clean-Up"]
+    thunderstorm["⛈️ The Big Storm"]
+    beaver["🦫 The Beaver Dam"]
+    cave["💎 The Crystal Cave"]
+    geyser["🌋 The Geyser!"]
+    you["🧒 Inside You!"]
 
     cloud -->|fall as rain| rain
     cloud -->|freeze| snow
@@ -71,17 +84,29 @@ flowchart TD
     evaporation -->|condense| cloud
     treatment --> tap
     tap -->|down the sink| drain
+    tap -->|gulp!| you
+    you -->|sweat| evaporation
+    you -->|flushed!| drain
     drain -->|sewer pipe| wastewater
     drain -->|storm runoff, untreated| river
     wastewater -->|cleaned, returned| river
+    cloud -->|grow| thunderstorm
+    thunderstorm -->|pour| rain
+    meadow --> beaver
+    beaver -->|over the dam| river
+    beaver -->|wetland soak| groundwater
+    groundwater -->|drip| cave
+    cave --> geyser
+    cave -->|underground stream| river
+    geyser -->|steam!| cloud
 
     classDef nature fill:#e8f2e4,stroke:#3e6b4e,color:#2c4f39
     classDef human fill:#fdeede,stroke:#c14f2c,color:#7a2f15
     classDef sky fill:#e3f1f7,stroke:#1f7a99,color:#155e78
 
-    class rain,snow,glacier,meadow,groundwater,trees,river,lake,ocean nature
-    class treatment,tap,drain,wastewater human
-    class cloud,evaporation sky
+    class rain,snow,glacier,meadow,groundwater,trees,river,lake,ocean,beaver,cave,geyser nature
+    class treatment,tap,drain,wastewater,you human
+    class cloud,evaporation,thunderstorm sky
 ```
 
 (Rendered copy: `docs/scene-graph.png`.)

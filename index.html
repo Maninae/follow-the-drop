@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/scene.css">
   <link rel="stylesheet" href="css/panels.css">
+  <link rel="stylesheet" href="css/effects.css">
+  <link rel="stylesheet" href="css/journal.css">
 </head>
 <body>
 
@@ -23,6 +25,7 @@
     <div id="scene-layer-b" class="scene-layer">
       <img class="scene-image" src="" alt="">
     </div>
+    <div id="effect-layer" class="effect-layer"></div>
     <div id="overlay-layer" class="overlay-layer">
       <div id="hotspot-layer" class="hotspot-layer"></div>
       <div id="nav-layer" class="hotspot-layer"></div>
@@ -34,13 +37,27 @@
     <div class="trailhead-sign">
       <span class="trailhead-drop">💧</span>
       <span class="trailhead-title">Follow the Drop</span>
+      <span id="state-badge" class="state-badge" title="What form is your drop in?"></span>
     </div>
-    <button id="passport-button" class="passport-button" aria-label="Open your water passport">
-      <span class="passport-icon">📖</span>
-      <span id="passport-count" class="passport-count">0 / 15</span>
-      <span class="passport-label">My Passport</span>
-    </button>
+    <div class="trailhead-right">
+      <button id="gust-button" class="gust-button" aria-label="A gust of wind blows you somewhere!">
+        <span class="gust-icon">🌬️</span><span class="gust-label">Wind gust!</span>
+      </button>
+      <button id="passport-button" class="passport-button" aria-label="Open your explorer's journal">
+        <span class="passport-icon">📖</span>
+        <span id="passport-count" class="passport-count">0 / 20</span>
+        <span class="passport-label">My Journal</span>
+      </button>
+    </div>
   </header>
+
+  <!-- Time-travel chip: every scene has a "long ago" story -->
+  <button id="longago-chip" class="longago-chip" aria-label="A story from long ago">
+    ⏳ Long ago…
+  </button>
+
+  <!-- Quest toast -->
+  <div id="quest-toast" class="quest-toast" hidden></div>
 
   <!-- Story panel: title, read-aloud text, choices -->
   <section id="story-panel" class="story-panel">
@@ -63,13 +80,29 @@
     <p id="fact-body" class="fact-body"></p>
   </div>
 
-  <!-- Passport modal -->
+  <!-- Explorer's Journal: map, quests, stamps -->
   <div id="passport-modal" class="passport-modal" hidden>
-    <div class="passport-book">
-      <button id="passport-close" class="passport-close" aria-label="Close passport">✕</button>
-      <h2 class="passport-title">My Water Passport</h2>
-      <p class="passport-subtitle">Collect a stamp from every place your drop visits!</p>
-      <div id="stamp-grid" class="stamp-grid"></div>
+    <div class="passport-book journal-book">
+      <button id="passport-close" class="passport-close" aria-label="Close journal">✕</button>
+      <h2 class="passport-title">My Explorer's Journal</h2>
+      <p id="odometer" class="odometer"></p>
+      <div class="journal-tabs" role="tablist">
+        <button class="journal-tab active" data-pane="map-pane">🗺️ Map</button>
+        <button class="journal-tab" data-pane="quest-pane">⭐ Quests</button>
+        <button class="journal-tab" data-pane="stamp-pane">📖 Stamps</button>
+      </div>
+      <div id="map-pane" class="journal-pane active">
+        <p class="pane-hint">The map fills in as you explore. Where do the “?” trails lead?</p>
+        <svg id="map-svg" class="map-svg" viewBox="0 0 1000 780" preserveAspectRatio="xMidYMid meet"></svg>
+      </div>
+      <div id="quest-pane" class="journal-pane">
+        <p class="pane-hint">Special journeys earn special badges!</p>
+        <ul id="quest-list" class="quest-list"></ul>
+      </div>
+      <div id="stamp-pane" class="journal-pane">
+        <p class="pane-hint">Collect a stamp from every place your drop visits!</p>
+        <div id="stamp-grid" class="stamp-grid"></div>
+      </div>
     </div>
   </div>
 
@@ -86,6 +119,8 @@
   <script src="js/data.js"></script>
   <script src="js/narrate.js"></script>
   <script src="js/passport.js"></script>
+  <script src="js/journal.js"></script>
+  <script src="js/effects.js"></script>
   <script src="js/transitions.js"></script>
   <script src="js/render.js"></script>
   <script src="js/main.js"></script>

@@ -1,4 +1,4 @@
-// Coordinator: owns the app state (current scene, visited set)
+// Coordinator: owns the app state (current scene, visited set, journey)
 // and wires every UI event. Other modules are stateless helpers.
 
 (function () {
@@ -8,6 +8,7 @@
   const initialHash = window.location.hash.slice(1);
   let currentSceneId = SCENES[initialHash] ? initialHash : START_SCENE;
   const visited = passportLoad();
+  const journey = journalLoad();
 
   const callbacks = {
     onNavigate: navigateTo,
@@ -30,19 +31,22 @@
       setTimeout(onHashChange, 650);
       return;
     }
+    const fromId = currentSceneId;
     hideFactCard();
     narrateStop();
     setSpeaking(false);
     transitionTo(SCENES[sceneId], function () {
       currentSceneId = sceneId;
       renderScene(sceneId, callbacks);
-      stamp(sceneId);
+      arrive(sceneId, fromId);
     });
   }
 
   window.addEventListener("hashchange", onHashChange);
 
-  function stamp(sceneId) {
+  // Everything that happens when the drop lands somewhere:
+  // stamp, journey log, quest checks, counters.
+  function arrive(sceneId, fromId) {
     const isNew = passportVisit(visited, sceneId);
     passportUpdateCounter(visited);
     if (isNew) {
@@ -51,13 +55,28 @@
       void btn.offsetWidth;
       btn.classList.add("stamped");
     }
+    const freshQuests = journalRecordVisit(journey, sceneId, fromId);
+    if (freshQuests.length) {
+      showQuestToast(freshQuests[0]);
+    }
   }
+
+  // ---------- Quest toast ----------
+
+  let toastTimer = null;
+  function showQuestToast(quest) {
+    const toast = document.getElementById("quest-toast");
+    toast.textContent = quest.emoji + " Badge earned: " + quest.title + "!";
+    toast.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.hidden = true; }, 4200);
+  }
+
+  // ---------- Read aloud ----------
 
   function setSpeaking(on) {
     document.getElementById("read-aloud").classList.toggle("speaking", on);
   }
-
-  // --- Wire UI events ---
 
   document.getElementById("read-aloud").addEventListener("click", function () {
     if (window.speechSynthesis && window.speechSynthesis.speaking) {
@@ -70,11 +89,35 @@
     }
   });
 
+  // ---------- Fact card ----------
+
   document.getElementById("fact-close").addEventListener("click", hideFactCard);
   document.getElementById("stage").addEventListener("click", hideFactCard);
 
+  // ---------- Long-ago chip ----------
+
+  document.getElementById("longago-chip").addEventListener("click", function (event) {
+    event.stopPropagation();
+    showFactCard(
+      { label: "Long ago…", fact: SCENES[currentSceneId].longAgo },
+      event.currentTarget
+    );
+  });
+
+  // ---------- Wind gust: whoosh down a random connected path ----------
+
+  document.getElementById("gust-button").addEventListener("click", function () {
+    const s = SCENES[currentSceneId];
+    const options = [].concat(s.next || [], s.back || []);
+    if (!options.length) return;
+    const pick = options[Math.floor(Math.random() * options.length)];
+    navigateTo(pick.to);
+  });
+
+  // ---------- Journal modal + tabs ----------
+
   document.getElementById("passport-button").addEventListener("click", function () {
-    passportRenderGrid(visited);
+    journalRender(journey, visited, currentSceneId);
     document.getElementById("passport-modal").hidden = false;
   });
   document.getElementById("passport-close").addEventListener("click", function () {
@@ -84,6 +127,17 @@
     if (event.target === event.currentTarget) event.currentTarget.hidden = true;
   });
 
+  document.querySelectorAll(".journal-tab").forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      document.querySelectorAll(".journal-tab").forEach(function (t) {
+        t.classList.toggle("active", t === tab);
+      });
+      document.querySelectorAll(".journal-pane").forEach(function (pane) {
+        pane.classList.toggle("active", pane.id === tab.dataset.pane);
+      });
+    });
+  });
+
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
       hideFactCard();
@@ -91,13 +145,15 @@
     }
   });
 
+  // ---------- Intro ----------
+
   const intro = document.getElementById("intro");
   document.getElementById("intro-start").addEventListener("click", function () {
     intro.hidden = true;
-    stamp(currentSceneId);
+    arrive(currentSceneId, null);
   });
 
-  // --- First paint ---
+  // ---------- First paint ----------
 
   history.replaceState(null, "", "#" + currentSceneId);
   stageInit(SCENES[currentSceneId]);
@@ -106,6 +162,6 @@
   if (visited.size === 0) {
     intro.hidden = false;
   } else {
-    stamp(currentSceneId);
+    arrive(currentSceneId, null);
   }
 })();

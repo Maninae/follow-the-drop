@@ -16,11 +16,25 @@ function renderScene(sceneId, callbacks) {
     .find(function (q) { return q; });
   document.getElementById("scene-prompt").textContent = question || "";
 
+  renderStateBadge(scene.state);
+  renderEffect(scene.effect);
   renderHotspots(scene, callbacks.onHotspot);
   renderNavSigns(scene, callbacks.onNavigate);
 
   // Reset story panel scroll on small screens
   document.querySelector(".story-card").scrollTop = 0;
+}
+
+const STATE_LABELS = {
+  liquid: "💧 You're liquid!",
+  ice: "❄️ You're ice!",
+  vapor: "💨 You're vapor!"
+};
+
+function renderStateBadge(state) {
+  const badge = document.getElementById("state-badge");
+  badge.textContent = STATE_LABELS[state] || "";
+  badge.className = "state-badge state-" + state;
 }
 
 function renderHotspots(scene, onHotspot) {

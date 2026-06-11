@@ -325,8 +325,10 @@
   .story-card { max-height: 34vh; padding: 13px 16px 15px; }
   .hotspot { width: 40px; height: 40px; }
   .hotspot-tag { display: none; }
-  /* Keep in-scene elements above the story panel's territory */
+  /* Keep in-scene elements above the story panel's territory,
+     staggered so clamped signs don't pile onto one row */
   .hotspot, .nav-sign { top: min(var(--y), 52%); }
+  .nav-sign:nth-child(odd) { top: min(var(--y), 42%); }
   .nav-sign-next { font-size: 14px; padding: 7px 13px; }
   .nav-sign-back { font-size: 12px; padding: 5px 10px; }
 }

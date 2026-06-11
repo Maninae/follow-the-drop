@@ -10,6 +10,10 @@ const SCENES = {
     emoji: "🌧️",
     stamp: "Rainy Valley",
     image: "assets/scenes/rain.png",
+    state: "liquid",
+    effect: "rain",
+    residence: { label: "about 10 minutes falling", years: 0.00002 },
+    longAgo: "This very drop has fallen as rain millions of times before — once, maybe, onto the back of a thirsty dinosaur. Rain is the oldest traveler on Earth.",
     body: "Drip! Drop! You are a tiny drop of water, falling from a big gray cloud. Down, down, down you go — past the hills, toward the green valley below.",
     hotspots: [
       { x: 16, y: 14, label: "The cloud",
@@ -23,7 +27,8 @@ const SCENES = {
       { to: "meadow", label: "Splash into the meadow", question: "Where will you land?", x: 75, y: 57 }
     ],
     back: [
-      { to: "cloud", label: "Up in the cloud", question: "Where did you come from?", x: 34, y: 11 }
+      { to: "cloud", label: "Up in the cloud", question: "Where did you come from?", x: 34, y: 11 },
+      { to: "thunderstorm", label: "A wild thunderstorm", question: "", x: 62, y: 20 }
     ]
   },
 
@@ -32,6 +37,10 @@ const SCENES = {
     emoji: "☁️",
     stamp: "Cloud Castle",
     image: "assets/scenes/cloud.png",
+    state: "vapor",
+    effect: "mist",
+    residence: { label: "about 9 days in the sky", years: 0.025 },
+    longAgo: "Clouds have crossed this sky since before there were any eyes to watch them. The water in this cloud once floated over volcanoes, dinosaurs, and the very first forests.",
     body: "Whoosh! You float high in the sky inside a puffy white cloud. You are so tiny and light up here. Brrr — as the air gets colder, you squeeze together with other drops and grow bigger and bigger…",
     hotspots: [
       { x: 40, y: 40, label: "Puffy cloud",
@@ -43,11 +52,13 @@ const SCENES = {
     ],
     next: [
       { to: "rain", label: "Fall as rain", question: "You're getting heavy! What happens next?", x: 55, y: 70 },
-      { to: "snow", label: "Freeze into snow", question: "", x: 87, y: 35 }
+      { to: "snow", label: "Freeze into snow", question: "", x: 87, y: 35 },
+      { to: "thunderstorm", label: "Grow into a thundercloud", question: "", x: 38, y: 78 }
     ],
     back: [
       { to: "evaporation", label: "Rising from the sea", question: "How did you get up here?", x: 65, y: 86 },
-      { to: "trees", label: "Breathed out by trees", question: "", x: 15, y: 60 }
+      { to: "trees", label: "Breathed out by trees", question: "", x: 15, y: 60 },
+      { to: "geyser", label: "Blasted up by a geyser", question: "", x: 45, y: 88 }
     ]
   },
 
@@ -56,6 +67,10 @@ const SCENES = {
     emoji: "❄️",
     stamp: "Snowy Peaks",
     image: "assets/scenes/snow.png",
+    state: "ice",
+    effect: "snow",
+    residence: { label: "a whole winter on the mountain", years: 0.5 },
+    longAgo: "Some snow that fell while woolly mammoths walked the Earth is still frozen deep inside glaciers today. Winter keeps very old secrets.",
     body: "It's so cold up here that you froze into a beautiful snowflake! You drift down softly and land on a mountain top. Now you rest in a thick white blanket of snow, waiting for spring.",
     hotspots: [
       { x: 45, y: 14, label: "Snowflakes",
@@ -79,6 +94,10 @@ const SCENES = {
     emoji: "🧊",
     stamp: "Glacier Gap",
     image: "assets/scenes/glacier.png",
+    state: "ice",
+    effect: "snow",
+    residence: { label: "a hundred years frozen — sometimes thousands!", years: 100 },
+    longAgo: "The deepest glacier ice froze before the pyramids were built. Scientists drill it out and read it like a frozen history book of Earth's air.",
     body: "You've been squeezed into a glacier — a giant river of ice that moves sooo slowly. You might stay frozen here for a hundred years! Glaciers creep down the mountain just a tiny bit every day.",
     hotspots: [
       { x: 25, y: 45, label: "Blue ice",
@@ -102,6 +121,10 @@ const SCENES = {
     emoji: "🌼",
     stamp: "Wildflower Meadow",
     image: "assets/scenes/meadow.png",
+    state: "liquid",
+    effect: null,
+    residence: { label: "a day soaking into the ground", years: 0.003 },
+    longAgo: "Long before farms, rain fed wild meadows where mammoths and giant sloths grazed. Same rain, same soil recipe — for millions of years.",
     body: "Plip! You land in a meadow full of wildflowers. Now you have a big choice. You can sink down into the soft soil… or roll downhill and join the stream. Which way will you go?",
     hotspots: [
       { x: 8, y: 52, label: "Wildflowers",
@@ -113,7 +136,8 @@ const SCENES = {
     ],
     next: [
       { to: "groundwater", label: "Sink into the soil", question: "Which way will you go?", x: 52, y: 88 },
-      { to: "river", label: "Flow into the stream", question: "", x: 80, y: 60 }
+      { to: "river", label: "Flow into the stream", question: "", x: 80, y: 60 },
+      { to: "beaver", label: "Meet the stream builders", question: "", x: 88, y: 74 }
     ],
     back: [
       { to: "rain", label: "Falling rain", question: "How did you get here?", x: 50, y: 10 }
@@ -125,6 +149,10 @@ const SCENES = {
     emoji: "🪨",
     stamp: "Secret Aquifer",
     image: "assets/scenes/groundwater.png",
+    state: "liquid",
+    effect: "bubbles",
+    residence: { label: "hundreds of years in the dark", years: 300 },
+    longAgo: "Some water under your feet has been hiding there since the Ice Age. Drink from a very deep well and you might sip water older than the last mammoth.",
     body: "Shhh… you're in a secret world under the ground! You trickle down between rocks and sand until you join a huge hidden pool called an aquifer. It's dark, cool, and very quiet down here.",
     hotspots: [
       { x: 10, y: 38, label: "Roots",
@@ -137,7 +165,8 @@ const SCENES = {
     next: [
       { to: "trees", label: "Get drunk up by tree roots", question: "Where do you go from down here?", x: 20, y: 48 },
       { to: "river", label: "Bubble out of a spring", question: "", x: 64, y: 70 },
-      { to: "treatment", label: "Get pumped up a well", question: "", x: 27, y: 10 }
+      { to: "treatment", label: "Get pumped up a well", question: "", x: 27, y: 10 },
+      { to: "cave", label: "Drip into a hidden cave", question: "", x: 40, y: 85 }
     ],
     back: [
       { to: "meadow", label: "Soaking through the meadow", question: "How did you get here?", x: 50, y: 8 }
@@ -149,6 +178,10 @@ const SCENES = {
     emoji: "🌲",
     stamp: "Whispering Forest",
     image: "assets/scenes/trees.png",
+    state: "vapor",
+    effect: "mist",
+    residence: { label: "three days inside a tree", years: 0.008 },
+    longAgo: "Three hundred million years ago, giant forests breathed out water just like this one — and those ancient trees slowly became the coal we find underground today.",
     body: "Sluuurp! A tall tree drinks you up through its roots. You climb up, up, up inside the trunk, all the way to a leaf. Then — whoosh — the leaf breathes you out into the air as invisible water vapor!",
     hotspots: [
       { x: 68, y: 28, label: "The leaves",
@@ -171,6 +204,10 @@ const SCENES = {
     emoji: "🏞️",
     stamp: "Rushing River",
     image: "assets/scenes/river.png",
+    state: "liquid",
+    effect: null,
+    residence: { label: "two weeks racing to the sea", years: 0.04 },
+    longAgo: "This river has been carving its valley for a million years. Your drop is riding a road that was built, splash by splash, by its great-great-grand-drops.",
     body: "Wheee! You're riding a rushing river, tumbling over rocks and zooming around bends. Fish dart below you, and a heron watches from the bank. Rivers are nature's water highways!",
     hotspots: [
       { x: 30, y: 45, label: "Jumping salmon",
@@ -197,6 +234,10 @@ const SCENES = {
     emoji: "🦆",
     stamp: "Mirror Lake",
     image: "assets/scenes/lake.png",
+    state: "liquid",
+    effect: "sparkle",
+    residence: { label: "ten years resting", years: 10 },
+    longAgo: "The oldest lake on Earth, Lake Baikal, is 25 million years old. Fish live there that exist nowhere else — raised by the same patient water, generation after generation.",
     body: "Ahhh. The river slows down and spreads out into a calm, quiet lake. The water is so still it looks like a mirror. All around the edges, animals come to drink. You're helping everyone!",
     hotspots: [
       { x: 16, y: 52, label: "Deer drinking",
@@ -220,6 +261,10 @@ const SCENES = {
     emoji: "🌊",
     stamp: "Pacific Point",
     image: "assets/scenes/ocean.png",
+    state: "liquid",
+    effect: "sparkle",
+    residence: { label: "three thousand years at sea", years: 3000 },
+    longAgo: "Every drop of the ocean has been here for about 4 billion years. The water you swim in once rained on dinosaurs, froze in ice ages, and rode clouds over ancient seas.",
     body: "You made it to the ocean — the biggest water on Earth! Waves crash against the cliffs and seabirds soar above you. Almost all of the world's water lives here in the salty sea.",
     hotspots: [
       { x: 25, y: 60, label: "The waves",
@@ -243,6 +288,10 @@ const SCENES = {
     emoji: "☀️",
     stamp: "Sunbeam Lift",
     image: "assets/scenes/evaporation.png",
+    state: "vapor",
+    effect: "sparkle",
+    residence: { label: "a few sparkling minutes rising", years: 0.00001 },
+    longAgo: "The sun has lifted water into the sky every single day for 4 billion years — and it has never once missed a day of work.",
     body: "The warm sun shines down on you, and something magical happens — you turn into vapor! You're invisible now, lighter than air, floating up into the big blue sky like a balloon.",
     hotspots: [
       { x: 50, y: 18, label: "The sun",
@@ -257,7 +306,8 @@ const SCENES = {
     ],
     back: [
       { to: "ocean", label: "The sunny ocean", question: "Where were you before?", x: 55, y: 85 },
-      { to: "lake", label: "The calm lake", question: "", x: 88, y: 78 }
+      { to: "lake", label: "The calm lake", question: "", x: 88, y: 78 },
+      { to: "you", label: "Sweat from a playing kid", question: "", x: 82, y: 18 }
     ]
   },
 
@@ -266,6 +316,10 @@ const SCENES = {
     emoji: "🏭",
     stamp: "Clean Water Works",
     image: "assets/scenes/treatment.png",
+    state: "liquid",
+    effect: "bubbles",
+    residence: { label: "a day getting squeaky clean", years: 0.003 },
+    longAgo: "The ancient Romans built stone aqueducts to carry clean water to their cities 2,000 years ago. Some still stand today — and a few still carry water!",
     body: "You've been scooped up and sent to a water treatment plant! Here, friendly workers and big machines clean you until you sparkle. You get filtered, swirled, and checked — now you're safe to drink!",
     hotspots: [
       { x: 15, y: 55, label: "The round pools",
@@ -289,6 +343,10 @@ const SCENES = {
     emoji: "🚰",
     stamp: "Kitchen Sink",
     image: "assets/scenes/tap.png",
+    state: "liquid",
+    effect: null,
+    residence: { label: "an hour zooming through pipes", years: 0.0001 },
+    longAgo: "Before pipes, kids your age carried every drop home in buckets from the village well. One bath took twenty trips!",
     body: "Squeak! Someone turns the faucet, and out you pour — right into a glass in a cozy kitchen. You help people drink, cook noodles, wash hands, and water the plants on the windowsill. Busy day!",
     hotspots: [
       { x: 42, y: 52, label: "The faucet",
@@ -299,7 +357,8 @@ const SCENES = {
         fact: "We use water for almost everything in the kitchen — boiling pasta, making soup, rinsing strawberries, and washing the dishes after." }
     ],
     next: [
-      { to: "drain", label: "Swirl down the drain", question: "Glug! Where do you go after the sink?", x: 50, y: 82 }
+      { to: "drain", label: "Swirl down the drain", question: "Glug! Where do you go after the sink?", x: 50, y: 82 },
+      { to: "you", label: "Get gulped by a thirsty kid", question: "", x: 25, y: 48 }
     ],
     back: [
       { to: "treatment", label: "The water-cleaning factory", question: "How did you get here?", x: 55, y: 20 }
@@ -311,6 +370,10 @@ const SCENES = {
     emoji: "🕳️",
     stamp: "Pipe Maze",
     image: "assets/scenes/drain.png",
+    state: "liquid",
+    effect: "bubbles",
+    residence: { label: "a day in the pipes", years: 0.003 },
+    longAgo: "Five hundred years ago, towns had no drains at all — people threw used water right out the window! Pipes under the street are one of the best inventions ever.",
     body: "Glug glug glug! Down you go, into the secret world of pipes under the street. Water from the sink and toilet rides the sewer pipe. Rain that washes off the street falls through the storm drain. Two pipes, two different adventures!",
     hotspots: [
       { x: 14, y: 48, label: "The house pipes",
@@ -326,7 +389,8 @@ const SCENES = {
     ],
     back: [
       { to: "tap", label: "The kitchen sink", question: "How did you get here?", x: 8, y: 12 },
-      { to: "rain", label: "Rain falling on the street", question: "", x: 55, y: 10 }
+      { to: "rain", label: "Rain falling on the street", question: "", x: 55, y: 10 },
+      { to: "you", label: "Flushed by somebody!", question: "", x: 30, y: 9 }
     ]
   },
 
@@ -335,6 +399,10 @@ const SCENES = {
     emoji: "🫧",
     stamp: "Bubble Works",
     image: "assets/scenes/wastewater.png",
+    state: "liquid",
+    effect: "bubbles",
+    residence: { label: "a day getting scrubbed", years: 0.003 },
+    longAgo: "The tiny helpful germs cleaning this water are an ancient family — their ancestors have been eating gunk in swamps for billions of years. Now they have a job in town.",
     body: "Phew — you made it to the wastewater plant, the bath house for dirty water! Machines stir you, bubbles fizz all around you, and billions of tiny helpful germs gobble up the yucky bits. Soon you're fresh enough to go back to nature.",
     hotspots: [
       { x: 33, y: 60, label: "The bubble tanks",
@@ -350,13 +418,146 @@ const SCENES = {
     back: [
       { to: "drain", label: "The pipes under the street", question: "How did you get here?", x: 10, y: 16 }
     ]
+  },
+
+  thunderstorm: {
+    title: "The Big Storm",
+    emoji: "⛈️",
+    stamp: "Thunder Ridge",
+    image: "assets/scenes/thunderstorm.png",
+    state: "vapor",
+    effect: "storm",
+    residence: { label: "one wild stormy hour", years: 0.0001 },
+    longAgo: "When lightning strikes sand, it melts it into twisty glass tubes called fulgurites. Scientists have found one that is 250 million years old — a fossil of a single flash!",
+    body: "Rumble… RUMBLE… You've grown into a giant thundercloud! Lightning flashes below you and thunder shakes the sky. Hold on tight, little drop — storms are the wildest ride in the whole water cycle!",
+    hotspots: [
+      { x: 9, y: 40, label: "Lightning",
+        fact: "A lightning bolt is five times hotter than the surface of the sun! It heats the air so fast that the air booms — and that boom is thunder." },
+      { x: 50, y: 12, label: "The anvil top",
+        fact: "Thunderclouds grow taller than the tallest mountains on Earth. The flat top spreads out like a giant anvil where the sky gets too thin to climb." },
+      { x: 58, y: 58, label: "The rain curtain",
+        fact: "See that gray curtain? That's millions of drops falling together. A big storm can drop a whole swimming pool of water on every backyard in town." }
+    ],
+    next: [
+      { to: "rain", label: "Pour down in the storm", question: "The cloud can't hold you any longer!", x: 70, y: 80 }
+    ],
+    back: [
+      { to: "cloud", label: "A calm white cloud", question: "What were you before?", x: 87, y: 14 }
+    ]
+  },
+
+  beaver: {
+    title: "The Beaver Dam",
+    emoji: "🦫",
+    stamp: "Beaver Lodge",
+    image: "assets/scenes/beaver.png",
+    state: "liquid",
+    effect: null,
+    residence: { label: "a season resting in the pond", years: 0.25 },
+    longAgo: "Ice-age beavers were as big as bears! Beavers have been building dams and making ponds for millions of years — they were shaping rivers long before people built their first bridge.",
+    body: "Thump! Your stream bumps into a wall of sticks and mud — a beaver dam! The busy builders slowed the water down and made a calm pond. Frogs, ducks, and fish all moved in. Beavers build homes for everyone!",
+    hotspots: [
+      { x: 75, y: 38, label: "The dam",
+        fact: "Beavers build dams with sticks, stones, and mud — using only their teeth and paws! A beaver's front teeth never stop growing, so chewing trees keeps them just right." },
+      { x: 27, y: 53, label: "The beaver",
+        fact: "Beavers can hold their breath for 15 minutes and their flat tails work like rudders. They slap the water — smack! — to warn their family of danger." },
+      { x: 16, y: 43, label: "The lodge",
+        fact: "That mound is the beaver's house, called a lodge. The front door is hidden underwater, so the beaver family stays safe and cozy inside." }
+    ],
+    next: [
+      { to: "river", label: "Spill over the top of the dam", question: "The pond is full! Where to now?", x: 66, y: 62 },
+      { to: "groundwater", label: "Sink into the soggy wetland", question: "", x: 42, y: 88 }
+    ],
+    back: [
+      { to: "meadow", label: "The little stream", question: "How did you get here?", x: 8, y: 12 }
+    ]
+  },
+
+  cave: {
+    title: "The Crystal Cave",
+    emoji: "💎",
+    stamp: "Echo Cavern",
+    image: "assets/scenes/cave.png",
+    state: "liquid",
+    effect: "sparkle",
+    residence: { label: "a thousand patient years dripping", years: 1000 },
+    longAgo: "Each stone icicle in a cave grows about as fast as your fingernails. The biggest ones started dripping before anyone on Earth had invented writing.",
+    body: "Drip… drip… echo! You've trickled into a secret cave deep underground. Every drop that falls from the ceiling leaves behind a tiny speck of stone. Drop by drop, water is building stone icicles in the dark!",
+    hotspots: [
+      { x: 25, y: 12, label: "Stalactites",
+        fact: "The stone icicles hanging from the ceiling are stalactites — they hold on tight! The ones growing up from the floor are stalagmites — they might reach the top someday." },
+      { x: 50, y: 78, label: "The cave pool",
+        fact: "Cave pools are some of the clearest water on Earth, filtered drip by drip through the rock. Blind cave fish and pale crayfish live in pools like this!" },
+      { x: 80, y: 42, label: "The glowing passage",
+        fact: "Caves can go on for miles and miles. The longest cave in the world has more than 400 miles of tunnels — and water carved every single one." }
+    ],
+    next: [
+      { to: "geyser", label: "Trickle toward the hot rocks", question: "Deeper or out? Choose your path!", x: 72, y: 68 },
+      { to: "river", label: "Ride an underground stream out", question: "", x: 40, y: 58 }
+    ],
+    back: [
+      { to: "groundwater", label: "The aquifer above", question: "How did you get here?", x: 50, y: 7 }
+    ]
+  },
+
+  geyser: {
+    title: "The Geyser!",
+    emoji: "🌋",
+    stamp: "Old Faithful",
+    image: "assets/scenes/geyser.png",
+    state: "vapor",
+    effect: "mist",
+    residence: { label: "weeks underground… then one wild minute", years: 0.04 },
+    longAgo: "Old Faithful, the most famous geyser in the world, has been erupting on schedule for thousands of years — long before anyone was there to give it a name.",
+    body: "It's getting hot down here! Volcano-warmed rocks boil you until — WHOOSH! — you blast out of the ground and shoot higher than a house, riding a tower of steam into the sky. What a way to fly!",
+    hotspots: [
+      { x: 38, y: 32, label: "The eruption",
+        fact: "A geyser is like a teapot buried in the ground. Hot rock boils the water below until the steam pushes it out in a giant whoosh — some geysers shoot ten stories high!" },
+      { x: 60, y: 78, label: "The rainbow pool",
+        fact: "Hot spring pools get their amazing orange and turquoise colors from billions of tiny heat-loving creatures. Each color likes a different temperature!" },
+      { x: 85, y: 82, label: "The stone terraces",
+        fact: "The pale rock around a geyser was built by the water itself — every splash leaves a little mineral behind, layer after layer, for thousands of years." }
+    ],
+    next: [
+      { to: "cloud", label: "Blast into the sky as steam!", question: "Whoosh! Where does the steam go?", x: 40, y: 6 }
+    ],
+    back: [
+      { to: "cave", label: "The crystal cave", question: "Where were you before?", x: 88, y: 28 }
+    ]
+  },
+
+  you: {
+    title: "Inside You!",
+    emoji: "🧒",
+    stamp: "Part of You",
+    image: "assets/scenes/you.png",
+    state: "liquid",
+    effect: null,
+    residence: { label: "about a week inside a kid", years: 0.02 },
+    longAgo: "Every person who ever lived borrowed their water from the same sky and rivers — knights, pharaohs, cave-painters, and now you. You are partly made of very famous water.",
+    body: "Gulp! A thirsty kid drinks you in one big sip — and now you're part of them! You ride to the tummy, hop into the blood, and zoom around delivering goodness. More than half of a kid is water… and right now, that's you!",
+    hotspots: [
+      { x: 60, y: 66, label: "The tummy",
+        fact: "Your tummy passes water into your blood in just a few minutes. That's why a drink of water makes you feel better so fast!" },
+      { x: 72, y: 50, label: "The blood highway",
+        fact: "Blood is mostly water! It rides around your whole body about once a minute, delivering oxygen and snacks to every finger and toe." },
+      { x: 84, y: 33, label: "Escape drops",
+        fact: "When you run and play, your body sweats to cool you down — tiny drops escape and evaporate right off your skin. You make your own water cycle!" }
+    ],
+    next: [
+      { to: "evaporation", label: "Escape as a drop of sweat", question: "How will you get out?", x: 88, y: 14 },
+      { to: "drain", label: "Whoooosh — get flushed!", question: "", x: 85, y: 86 }
+    ],
+    back: [
+      { to: "tap", label: "The glass of water", question: "How did you get here?", x: 40, y: 12 }
+    ]
   }
 
 };
 
 const START_SCENE = "rain";
 const SCENE_ORDER = [
-  "rain", "cloud", "snow", "glacier", "meadow", "groundwater", "trees",
-  "river", "lake", "ocean", "evaporation", "treatment", "tap", "drain",
-  "wastewater"
+  "cloud", "thunderstorm", "rain", "snow", "glacier", "meadow", "beaver",
+  "groundwater", "cave", "geyser", "trees", "river", "lake", "ocean",
+  "evaporation", "treatment", "tap", "you", "drain", "wastewater"
 ];
