@@ -42,10 +42,16 @@ Each scene node has:
 - `image` — path to its illustration
 - `hotspots` — 2–3 of `{x, y, label, fact}`. x/y are PERCENTAGES of the
   image; the named thing must visually exist at that spot in the art.
-- `next` — forward choices `{to, label, question}` ("where does the
-  water go?"), rendered as blue arrow pills
-- `back` — backward choices ("where did the water come from?"),
-  rendered as quiet beige pills
+- `next` — forward choices `{to, label, question, x, y}` ("where does
+  the water go?"), rendered as blue trail signs planted IN the scene at
+  (x%, y%) — the sign must sit on the thing it names (the soil sign on
+  the soil, the stream sign on the stream)
+- `back` — backward choices (same shape), rendered as quiet cream signs
+
+The first non-empty `question` among `next` choices shows in the story
+panel as a clay-colored prompt. Sign/hotspot positions must avoid the
+story panel's bottom-left corner (roughly x &lt; 35%, y &gt; 55% on
+desktop); on phones, CSS clamps all in-scene elements to y ≤ 52%.
 
 The graph is a cycle: nature loop (cloud → rain/snow → land → river →
 lake/ocean → evaporation → cloud) plus a human loop (river/groundwater →

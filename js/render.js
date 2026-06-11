@@ -15,9 +15,12 @@ function renderScene(sceneId, callbacks) {
   document.getElementById("scene-title").textContent = scene.title;
   document.getElementById("scene-body").textContent = scene.body;
 
+  const question = (scene.next || []).map(function (c) { return c.question; })
+    .find(function (q) { return q; });
+  document.getElementById("scene-prompt").textContent = question || "";
+
   renderHotspots(scene, callbacks.onHotspot);
-  renderChoices("next-choices", scene.next, "choice-next", callbacks.onNavigate);
-  renderChoices("back-choices", scene.back, "choice-back", callbacks.onNavigate);
+  renderNavSigns(scene, callbacks.onNavigate);
 
   // Reset story panel scroll on small screens
   document.querySelector(".story-card").scrollTop = 0;
@@ -29,8 +32,8 @@ function renderHotspots(scene, onHotspot) {
   scene.hotspots.forEach(function (spot, i) {
     const btn = document.createElement("button");
     btn.className = "hotspot";
-    btn.style.left = spot.x + "%";
-    btn.style.top = spot.y + "%";
+    btn.style.setProperty("--x", spot.x + "%");
+    btn.style.setProperty("--y", spot.y + "%");
     btn.setAttribute("aria-label", "Look closer: " + spot.label);
     btn.innerHTML = "?" + '<span class="hotspot-tag">' + spot.label + "</span>";
     btn.addEventListener("click", function (event) {
@@ -42,26 +45,27 @@ function renderHotspots(scene, onHotspot) {
   });
 }
 
-function renderChoices(containerId, choices, choiceClass, onNavigate) {
-  const container = document.getElementById(containerId);
-  container.innerHTML = "";
-  if (!choices || choices.length === 0) return;
+// Choices are trail signs planted in the scene at the place they lead
+// to/from: forward signs (blue, →) and back signs (cream, ↩).
+function renderNavSigns(scene, onNavigate) {
+  const layer = document.getElementById("nav-layer");
+  layer.innerHTML = "";
 
-  const question = choices.find(function (c) { return c.question; });
-  if (question) {
-    const q = document.createElement("p");
-    q.className = "choice-question";
-    q.textContent = question.question;
-    container.appendChild(q);
+  function plant(choice, signClass) {
+    const btn = document.createElement("button");
+    btn.className = "nav-sign " + signClass;
+    btn.style.setProperty("--x", choice.x + "%");
+    btn.style.setProperty("--y", choice.y + "%");
+    btn.innerHTML = '<span class="nav-sign-label">' + choice.label + "</span>";
+    btn.addEventListener("click", function (event) {
+      event.stopPropagation();
+      onNavigate(choice.to);
+    });
+    layer.appendChild(btn);
   }
 
-  choices.forEach(function (choice) {
-    const btn = document.createElement("button");
-    btn.className = "choice " + choiceClass;
-    btn.textContent = choice.label;
-    btn.addEventListener("click", function () { onNavigate(choice.to); });
-    container.appendChild(btn);
-  });
+  (scene.back || []).forEach(function (c) { plant(c, "nav-sign-back"); });
+  (scene.next || []).forEach(function (c) { plant(c, "nav-sign-next"); });
 }
 
 // Positions the fact card near a hotspot, clamped to the viewport,

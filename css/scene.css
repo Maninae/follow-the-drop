@@ -63,6 +63,8 @@
 
 .hotspot {
   position: absolute;
+  left: var(--x);
+  top: var(--y);
   transform: translate(-50%, -50%);
   width: 46px;
   height: 46px;
@@ -111,6 +113,68 @@
   padding: 3px 10px;
   border-radius: 999px;
   pointer-events: none;
+}
+
+/* ---------- Trail signs (navigation choices, planted in the scene) ---------- */
+
+.nav-sign {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(20, 28, 18, 0.45);
+  transition: transform 0.15s ease, filter 0.15s ease;
+  z-index: 4;
+}
+.nav-sign:hover, .nav-sign:focus-visible {
+  transform: translate(-50%, -50%) scale(1.08);
+  filter: brightness(1.07);
+  animation-play-state: paused;
+}
+.nav-sign:active { transform: translate(-50%, -52%) scale(1.04); }
+
+/* Little pointer stake under each sign */
+.nav-sign::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 7px solid transparent;
+}
+
+.nav-sign-next {
+  background: var(--river);
+  color: #fff7ea;
+  border: 2px solid #fff7ea;
+  font-size: 16px;
+  padding: 9px 18px;
+  animation: sign-glow 2.6s ease-in-out infinite;
+}
+.nav-sign-next::before { content: "→"; font-size: 17px; }
+.nav-sign-next::after { border-top-color: var(--river); }
+
+.nav-sign-back {
+  background: var(--paper) var(--grain);
+  color: var(--pine-deep);
+  border: 2px solid var(--paper-edge);
+  font-size: 13.5px;
+  padding: 6px 13px;
+  opacity: 0.92;
+}
+.nav-sign-back::before { content: "↩"; font-size: 14px; }
+.nav-sign-back::after { border-top-color: var(--paper-edge); }
+
+@keyframes sign-glow {
+  0%, 100% { box-shadow: 0 4px 14px rgba(20, 28, 18, 0.45), 0 0 0 0 rgba(255, 247, 234, 0.55); }
+  50%      { box-shadow: 0 4px 14px rgba(20, 28, 18, 0.45), 0 0 0 12px rgba(255, 247, 234, 0); }
 }
 
 /* ---------- Fact card popover ---------- */

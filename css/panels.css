@@ -87,15 +87,15 @@
   bottom: 0;
   z-index: 15;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 0 16px 18px;
   pointer-events: none;
 }
 
 .story-card {
   pointer-events: auto;
-  width: min(760px, 100%);
-  max-height: 46vh;
+  width: min(400px, 100%);
+  max-height: 44vh;
   overflow-y: auto;
   background: var(--paper) var(--grain);
   border: 2px solid var(--paper-edge);
@@ -141,70 +141,22 @@
 }
 
 .scene-body {
-  font-size: clamp(15.5px, 2.4vw, 17.5px);
+  font-size: clamp(15px, 2.2vw, 16.5px);
   line-height: 1.6;
-  margin: 8px 0 14px;
+  margin: 8px 0 0;
 }
 
-/* ---------- Choices ---------- */
-
-.choices {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  align-items: flex-end;
-  justify-content: space-between;
-}
-
-.choice-group {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  min-width: 0;
-}
-.choice-group:empty { display: none; }
-
-.choice-question {
+/* The forward question, nudging kids toward the signs in the scene */
+.scene-prompt {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 13px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin: 0 0 2px;
-}
-.choice-group-next .choice-question { color: var(--clay); }
-
-.choice {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 16px;
-  border-radius: 999px;
-  padding: 9px 18px;
-  text-align: left;
-  transition: transform 0.15s ease, filter 0.15s ease;
-}
-.choice:hover { transform: translateY(-2px) scale(1.03); filter: brightness(1.08); }
-.choice:active { transform: translateY(1px); }
-
-.choice-next {
-  background: var(--river);
-  color: #fff7ea;
-  border-bottom: 4px solid var(--river-deep);
-}
-.choice-next::after { content: "→"; font-size: 18px; }
-
-.choice-back {
-  background: var(--paper-deep);
-  color: var(--pine-deep);
-  border: 2px solid var(--paper-edge);
   font-size: 14px;
-  padding: 7px 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin: 12px 0 0;
 }
-.choice-back::before { content: "↩"; font-size: 15px; }
+.scene-prompt:empty { display: none; }
 
 /* ---------- Passport modal ---------- */
 
@@ -370,9 +322,11 @@
 
 @media (max-width: 560px) {
   .trailhead-title, .passport-label { display: none; }
-  .story-card { max-height: 52vh; padding: 13px 16px 15px; }
-  .choices { flex-direction: column-reverse; align-items: stretch; }
-  .choice { justify-content: center; }
+  .story-card { max-height: 34vh; padding: 13px 16px 15px; }
   .hotspot { width: 40px; height: 40px; }
   .hotspot-tag { display: none; }
+  /* Keep in-scene elements above the story panel's territory */
+  .hotspot, .nav-sign { top: min(var(--y), 52%); }
+  .nav-sign-next { font-size: 14px; padding: 7px 13px; }
+  .nav-sign-back { font-size: 12px; padding: 5px 10px; }
 }

@@ -20,10 +20,10 @@ const SCENES = {
         fact: "Rain waters gardens, fills creeks, and washes the streets. The people down there need rain just as much as the plants do." }
     ],
     next: [
-      { to: "meadow", label: "Splash into the meadow", question: "Where will you land?" }
+      { to: "meadow", label: "Splash into the meadow", question: "Where will you land?", x: 50, y: 70 }
     ],
     back: [
-      { to: "cloud", label: "Up in the cloud", question: "Where did you come from?" }
+      { to: "cloud", label: "Up in the cloud", question: "Where did you come from?", x: 38, y: 13 }
     ]
   },
 
@@ -42,12 +42,12 @@ const SCENES = {
         fact: "Some birds fly as high as the clouds! Geese have been seen flying higher than the tallest mountains on Earth." }
     ],
     next: [
-      { to: "rain", label: "Fall as rain", question: "You're getting heavy! What happens next?" },
-      { to: "snow", label: "Freeze into snow", question: "" }
+      { to: "rain", label: "Fall as rain", question: "You're getting heavy! What happens next?", x: 55, y: 64 },
+      { to: "snow", label: "Freeze into snow", question: "", x: 87, y: 24 }
     ],
     back: [
-      { to: "evaporation", label: "Rising from the sea", question: "How did you get up here?" },
-      { to: "trees", label: "Breathed out by trees", question: "" }
+      { to: "evaporation", label: "Rising from the sea", question: "How did you get up here?", x: 65, y: 86 },
+      { to: "trees", label: "Breathed out by trees", question: "", x: 11, y: 28 }
     ]
   },
 
@@ -66,11 +66,11 @@ const SCENES = {
         fact: "Mountain snow is like a giant water savings bank. It melts slowly in spring and gives rivers water all summer long." }
     ],
     next: [
-      { to: "glacier", label: "Get packed into a glacier", question: "Spring is coming. What happens to you?" },
-      { to: "river", label: "Melt and rush downhill", question: "" }
+      { to: "glacier", label: "Get packed into a glacier", question: "Spring is coming. What happens to you?", x: 88, y: 62 },
+      { to: "river", label: "Melt and rush downhill", question: "", x: 54, y: 82 }
     ],
     back: [
-      { to: "cloud", label: "Up in the cloud", question: "Where did you come from?" }
+      { to: "cloud", label: "Up in the cloud", question: "Where did you come from?", x: 50, y: 10 }
     ]
   },
 
@@ -89,11 +89,11 @@ const SCENES = {
         fact: "Glaciers groan, pop, and crack as they move. Scientists listen to the sounds to learn how fast the ice is going." }
     ],
     next: [
-      { to: "river", label: "Melt into a rushing river", question: "After many years, you melt! Where do you go?" },
-      { to: "ocean", label: "Float to the sea as an iceberg", question: "" }
+      { to: "river", label: "Melt into a rushing river", question: "After many years, you melt! Where do you go?", x: 52, y: 86 },
+      { to: "ocean", label: "Float to the sea as an iceberg", question: "", x: 87, y: 76 }
     ],
     back: [
-      { to: "snow", label: "Snow on the peaks", question: "How did you get here?" }
+      { to: "snow", label: "Snow on the peaks", question: "How did you get here?", x: 28, y: 12 }
     ]
   },
 
@@ -112,11 +112,11 @@ const SCENES = {
         fact: "Soil is full of tiny holes, like a sponge. Rain slips through the holes and sinks deep underground." }
     ],
     next: [
-      { to: "groundwater", label: "Sink into the soil", question: "Which way will you go?" },
-      { to: "river", label: "Flow into the stream", question: "" }
+      { to: "groundwater", label: "Sink into the soil", question: "Which way will you go?", x: 55, y: 84 },
+      { to: "river", label: "Flow into the stream", question: "", x: 80, y: 50 }
     ],
     back: [
-      { to: "rain", label: "Falling rain", question: "How did you get here?" }
+      { to: "rain", label: "Falling rain", question: "How did you get here?", x: 60, y: 12 }
     ]
   },
 
@@ -135,12 +135,12 @@ const SCENES = {
         fact: "People dig wells to reach the water underground. A pump pulls it up so families and farms can use it." }
     ],
     next: [
-      { to: "trees", label: "Get drunk up by tree roots", question: "Where do you go from down here?" },
-      { to: "river", label: "Bubble out of a spring", question: "" },
-      { to: "treatment", label: "Get pumped up a well", question: "" }
+      { to: "trees", label: "Get drunk up by tree roots", question: "Where do you go from down here?", x: 25, y: 16 },
+      { to: "river", label: "Bubble out of a spring", question: "", x: 9, y: 55 },
+      { to: "treatment", label: "Get pumped up a well", question: "", x: 91, y: 45 }
     ],
     back: [
-      { to: "meadow", label: "Soaking through the meadow", question: "How did you get here?" }
+      { to: "meadow", label: "Soaking through the meadow", question: "How did you get here?", x: 58, y: 9 }
     ]
   },
 
@@ -159,10 +159,10 @@ const SCENES = {
         fact: "Deer, squirrels, and birds all need the forest's water. Animals can smell rain coming before it arrives!" }
     ],
     next: [
-      { to: "cloud", label: "Float up and join a cloud", question: "You're vapor now! Where to?" }
+      { to: "cloud", label: "Float up and join a cloud", question: "You're vapor now! Where to?", x: 75, y: 13 }
     ],
     back: [
-      { to: "groundwater", label: "Underground, with the roots", question: "How did you get here?" }
+      { to: "groundwater", label: "Underground, with the roots", question: "How did you get here?", x: 52, y: 87 }
     ]
   },
 
@@ -181,14 +181,14 @@ const SCENES = {
         fact: "River rocks are smooth because water has been rolling and rubbing them for thousands of years. Water is soft, but it can shape stone!" }
     ],
     next: [
-      { to: "lake", label: "Rest in a calm lake", question: "Where does the river take you?" },
-      { to: "ocean", label: "Race all the way to the ocean", question: "" },
-      { to: "treatment", label: "Get scooped up for the town", question: "" }
+      { to: "lake", label: "Rest in a calm lake", question: "Where does the river take you?", x: 60, y: 30 },
+      { to: "ocean", label: "Race all the way to the ocean", question: "", x: 90, y: 62 },
+      { to: "treatment", label: "Get scooped up for the town", question: "", x: 52, y: 78 }
     ],
     back: [
-      { to: "meadow", label: "A stream in the meadow", question: "Where did the river start?" },
-      { to: "snow", label: "Melting mountain snow", question: "" },
-      { to: "drain", label: "Cleaned water from the town", question: "" }
+      { to: "meadow", label: "A stream in the meadow", question: "Where did the river start?", x: 12, y: 38 },
+      { to: "snow", label: "Melting mountain snow", question: "", x: 35, y: 10 },
+      { to: "drain", label: "Cleaned water from the town", question: "", x: 78, y: 12 }
     ]
   },
 
@@ -207,11 +207,11 @@ const SCENES = {
         fact: "Reeds and cattails grow where the water is shallow. They are like an apartment building for frogs, dragonflies, and baby fish." }
     ],
     next: [
-      { to: "evaporation", label: "Warm up in the sun and rise", question: "Where do you go from the lake?" },
-      { to: "river", label: "Slip out where the river leaves", question: "" }
+      { to: "evaporation", label: "Warm up in the sun and rise", question: "Where do you go from the lake?", x: 60, y: 18 },
+      { to: "river", label: "Slip out where the river leaves", question: "", x: 91, y: 46 }
     ],
     back: [
-      { to: "river", label: "The rushing river", question: "How did you get here?" }
+      { to: "river", label: "The rushing river", question: "How did you get here?", x: 10, y: 30 }
     ]
   },
 
@@ -230,11 +230,11 @@ const SCENES = {
         fact: "Waves have been carving these cliffs for millions of years, one splash at a time. The beach's sand is made of tiny pieces of broken-down rock and shell." }
     ],
     next: [
-      { to: "evaporation", label: "Warm up in the sunshine", question: "The sun is shining on you. What happens?" }
+      { to: "evaporation", label: "Warm up in the sunshine", question: "The sun is shining on you. What happens?", x: 45, y: 15 }
     ],
     back: [
-      { to: "river", label: "A river reaching the sea", question: "How did you get here?" },
-      { to: "glacier", label: "An iceberg, melting", question: "" }
+      { to: "river", label: "A river reaching the sea", question: "How did you get here?", x: 10, y: 35 },
+      { to: "glacier", label: "An iceberg, melting", question: "", x: 65, y: 80 }
     ]
   },
 
@@ -253,11 +253,11 @@ const SCENES = {
         fact: "Water vapor is real water, but the pieces are too tiny to see. Right now there is invisible water floating in the air all around you!" }
     ],
     next: [
-      { to: "cloud", label: "Cool off and become a cloud", question: "You float higher and higher. Then what?" }
+      { to: "cloud", label: "Cool off and become a cloud", question: "You float higher and higher. Then what?", x: 20, y: 13 }
     ],
     back: [
-      { to: "ocean", label: "The sunny ocean", question: "Where were you before?" },
-      { to: "lake", label: "The calm lake", question: "" }
+      { to: "ocean", label: "The sunny ocean", question: "Where were you before?", x: 55, y: 84 },
+      { to: "lake", label: "The calm lake", question: "", x: 88, y: 70 }
     ]
   },
 
@@ -276,11 +276,11 @@ const SCENES = {
         fact: "Clean water gets pumped up into tall towers. Being up high gives the water a push, so it can zoom through pipes to every house in town." }
     ],
     next: [
-      { to: "tap", label: "Zoom through pipes to a kitchen", question: "You're clean and ready! Where to?" }
+      { to: "tap", label: "Zoom through pipes to a kitchen", question: "You're clean and ready! Where to?", x: 58, y: 72 }
     ],
     back: [
-      { to: "river", label: "Scooped from the river", question: "How did you get here?" },
-      { to: "groundwater", label: "Pumped up from a well", question: "" }
+      { to: "river", label: "Scooped from the river", question: "How did you get here?", x: 52, y: 90 },
+      { to: "groundwater", label: "Pumped up from a well", question: "", x: 11, y: 30 }
     ]
   },
 
@@ -299,10 +299,10 @@ const SCENES = {
         fact: "We use water for almost everything in the kitchen — boiling pasta, making soup, rinsing strawberries, and washing the dishes after." }
     ],
     next: [
-      { to: "drain", label: "Swirl down the drain", question: "Glug! Where do you go after the sink?" }
+      { to: "drain", label: "Swirl down the drain", question: "Glug! Where do you go after the sink?", x: 55, y: 62 }
     ],
     back: [
-      { to: "treatment", label: "The water-cleaning factory", question: "How did you get here?" }
+      { to: "treatment", label: "The water-cleaning factory", question: "How did you get here?", x: 30, y: 15 }
     ]
   },
 
@@ -321,10 +321,10 @@ const SCENES = {
         fact: "After it's cleaned, the water flows back into the river to keep traveling. Water is never used up — it just keeps moving, around and around!" }
     ],
     next: [
-      { to: "river", label: "Flow back to the river, clean!", question: "You're clean again! Where now?" }
+      { to: "river", label: "Flow back to the river, clean!", question: "You're clean again! Where now?", x: 90, y: 56 }
     ],
     back: [
-      { to: "tap", label: "The kitchen sink", question: "How did you get here?" }
+      { to: "tap", label: "The kitchen sink", question: "How did you get here?", x: 12, y: 10 }
     ]
   }
 
