@@ -25,6 +25,64 @@ clean and comes back.
 - **Read-aloud button** on every page for pre-readers
 - Watery blur transitions between scenes
 
+## The map
+
+Fourteen scenes in one connected cycle — the nature loop, plus the human
+water loop that borrows from the river and gives it back
+(forward edges shown; most are also walkable backward in-game):
+
+```mermaid
+flowchart TD
+    cloud["☁️ Inside a Cloud"]
+    rain["🌧️ Rain Falls!"]
+    snow["❄️ Snow on the Mountains"]
+    glacier["🧊 Rivers of Ice"]
+    meadow["🌼 Down on the Ground"]
+    groundwater["🪨 Hidden Water Underground"]
+    trees["🌲 Trees Drink Too"]
+    river["🏞️ Ride the River"]
+    lake["🦆 Resting in the Lake"]
+    ocean["🌊 The Big Blue Ocean"]
+    evaporation["☀️ Up, Up, Up!"]
+    treatment["🏭 Water-Cleaning Factory"]
+    tap["🚰 Water at Home"]
+    drain["🕳️ Down the Drain"]
+
+    cloud -->|fall as rain| rain
+    cloud -->|freeze| snow
+    rain -->|splash| meadow
+    snow -->|pack into ice| glacier
+    snow -->|melt| river
+    glacier -->|melt| river
+    glacier -->|calve iceberg| ocean
+    meadow -->|soak in| groundwater
+    meadow -->|flow| river
+    groundwater -->|roots drink| trees
+    groundwater -->|spring| river
+    groundwater -->|well pump| treatment
+    trees -->|transpiration| cloud
+    river --> lake
+    river --> ocean
+    river -->|town intake| treatment
+    lake -->|sun| evaporation
+    lake -->|outlet| river
+    ocean -->|sun| evaporation
+    evaporation -->|condense| cloud
+    treatment --> tap
+    tap -->|down the sink| drain
+    drain -->|cleaned, returned| river
+
+    classDef nature fill:#e8f2e4,stroke:#3e6b4e,color:#2c4f39
+    classDef human fill:#fdeede,stroke:#c14f2c,color:#7a2f15
+    classDef sky fill:#e3f1f7,stroke:#1f7a99,color:#155e78
+
+    class rain,snow,glacier,meadow,groundwater,trees,river,lake,ocean nature
+    class treatment,tap,drain human
+    class cloud,evaporation sky
+```
+
+(Rendered copy: `docs/scene-graph.png`.)
+
 ## Running locally
 
 It's a plain static site — no build, no dependencies:
