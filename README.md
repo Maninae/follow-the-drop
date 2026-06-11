@@ -27,7 +27,7 @@ clean and comes back.
 
 ## The map
 
-Fourteen scenes in one connected cycle — the nature loop, plus the human
+Fifteen scenes in one connected cycle — the nature loop, plus the human
 water loop that borrows from the river and gives it back
 (forward edges shown; most are also walkable backward in-game):
 
@@ -47,6 +47,7 @@ flowchart TD
     treatment["🏭 Water-Cleaning Factory"]
     tap["🚰 Water at Home"]
     drain["🕳️ Down the Drain"]
+    wastewater["🫧 The Big Clean-Up"]
 
     cloud -->|fall as rain| rain
     cloud -->|freeze| snow
@@ -70,14 +71,16 @@ flowchart TD
     evaporation -->|condense| cloud
     treatment --> tap
     tap -->|down the sink| drain
-    drain -->|cleaned, returned| river
+    drain -->|sewer pipe| wastewater
+    drain -->|storm runoff, untreated| river
+    wastewater -->|cleaned, returned| river
 
     classDef nature fill:#e8f2e4,stroke:#3e6b4e,color:#2c4f39
     classDef human fill:#fdeede,stroke:#c14f2c,color:#7a2f15
     classDef sky fill:#e3f1f7,stroke:#1f7a99,color:#155e78
 
     class rain,snow,glacier,meadow,groundwater,trees,river,lake,ocean nature
-    class treatment,tap,drain human
+    class treatment,tap,drain,wastewater human
     class cloud,evaporation sky
 ```
 

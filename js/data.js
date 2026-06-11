@@ -188,7 +188,7 @@ const SCENES = {
     back: [
       { to: "meadow", label: "A stream in the meadow", question: "Where did the river start?", x: 8, y: 30 },
       { to: "snow", label: "Melting mountain snow", question: "", x: 35, y: 8 },
-      { to: "drain", label: "Cleaned water from the town", question: "", x: 78, y: 10 }
+      { to: "wastewater", label: "Cleaned water from the town", question: "", x: 78, y: 10 }
     ]
   },
 
@@ -311,20 +311,44 @@ const SCENES = {
     emoji: "🕳️",
     stamp: "Pipe Maze",
     image: "assets/scenes/drain.png",
-    body: "Glug glug glug! Down the drain you go, into a maze of pipes under the city. But this isn't goodbye — you ride the pipes to a wastewater plant, where you get scrubbed clean and sent back to the river. The journey never ends!",
+    body: "Glug glug glug! Down you go, into the secret world of pipes under the street. Water from the sink and toilet rides the sewer pipe. Rain that washes off the street falls through the storm drain. Two pipes, two different adventures!",
     hotspots: [
-      { x: 20, y: 50, label: "The pipes",
-        fact: "Under every street is a hidden world of pipes. Some bring clean water to houses, and others carry used water away. They never get mixed up!" },
-      { x: 52, y: 40, label: "The wastewater plant",
-        fact: "At the wastewater plant, helpful machines — and even helpful germs! — eat up the yucky stuff. The water leaves much cleaner than it arrived." },
-      { x: 75, y: 62, label: "Back to the river",
-        fact: "After it's cleaned, the water flows back into the river to keep traveling. Water is never used up — it just keeps moving, around and around!" }
+      { x: 14, y: 48, label: "The house pipes",
+        fact: "Every sink, tub, and toilet in the house empties into one big pipe — the sewer pipe. It carries the used water away to get cleaned." },
+      { x: 43, y: 50, label: "The storm drain",
+        fact: "That metal grate is a storm drain. When rain washes the street, the water falls right in — so the streets don't turn into rivers!" },
+      { x: 58, y: 72, label: "Where does it all go?",
+        fact: "Sewer water goes to the wastewater plant for a good scrubbing. But storm water usually is not cleaned — it flows straight to the creek! That's why we never pour yucky stuff down a storm drain." }
     ],
     next: [
-      { to: "river", label: "Flow back to the river, clean!", question: "You're clean again! Where now?", x: 90, y: 42 }
+      { to: "wastewater", label: "Ride the sewer pipe to get cleaned", question: "Two pipes, two paths! Which one are you riding?", x: 72, y: 42 },
+      { to: "river", label: "Rush out with the storm water", question: "", x: 86, y: 84 }
     ],
     back: [
-      { to: "tap", label: "The kitchen sink", question: "How did you get here?", x: 12, y: 10 }
+      { to: "tap", label: "The kitchen sink", question: "How did you get here?", x: 8, y: 12 },
+      { to: "rain", label: "Rain falling on the street", question: "", x: 55, y: 10 }
+    ]
+  },
+
+  wastewater: {
+    title: "The Big Clean-Up",
+    emoji: "🫧",
+    stamp: "Bubble Works",
+    image: "assets/scenes/wastewater.png",
+    body: "Phew — you made it to the wastewater plant, the bath house for dirty water! Machines stir you, bubbles fizz all around you, and billions of tiny helpful germs gobble up the yucky bits. Soon you're fresh enough to go back to nature.",
+    hotspots: [
+      { x: 33, y: 60, label: "The bubble tanks",
+        fact: "Air bubbles fizz through the water like a giant soda. The bubbles help tiny helpful germs breathe while they eat up the dirt." },
+      { x: 50, y: 34, label: "The settling pools",
+        fact: "In these quiet pools the water slows down and rests. The last bits of gunk sink to the bottom, and the clean water floats on top." },
+      { x: 79, y: 60, label: "The way out",
+        fact: "Checked, cleaned, and approved! The water flows back to the river much cleaner than it arrived. Nature gets its water back." }
+    ],
+    next: [
+      { to: "river", label: "Flow back to the river, clean!", question: "You're clean again! Where now?", x: 85, y: 72 }
+    ],
+    back: [
+      { to: "drain", label: "The pipes under the street", question: "How did you get here?", x: 10, y: 16 }
     ]
   }
 
@@ -333,5 +357,6 @@ const SCENES = {
 const START_SCENE = "rain";
 const SCENE_ORDER = [
   "rain", "cloud", "snow", "glacier", "meadow", "groundwater", "trees",
-  "river", "lake", "ocean", "evaporation", "treatment", "tap", "drain"
+  "river", "lake", "ocean", "evaporation", "treatment", "tap", "drain",
+  "wastewater"
 ];

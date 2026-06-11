@@ -111,11 +111,23 @@ PROMPTS = {
         "stove at the right. Warm wood counters, a potted plant, soft light."
     ),
     "drain": (
-        "A picture-book cutaway under a city street: houses and a road along "
-        "the top, and below ground a maze of pipes carrying bright blue water "
-        "from a house drain on the upper-left to a friendly wastewater "
-        "treatment chamber with bubbles in the center-right, then out through "
-        "a pipe of clean sparkling water to a river at the lower-right."
+        "A picture-book cutaway diagram under a small town street, drawn with "
+        "simple, clear, easy-to-follow plumbing. On the left, a cross-section "
+        "of a cozy two-story house: a kitchen sink upstairs and a toilet "
+        "downstairs, each draining into one vertical pipe that runs down into "
+        "a single large underground sewer pipe. In the middle, the rainy "
+        "street surface: gutter water pours through a storm drain grate into "
+        "a second, separate pipe. Both pipes run side by side through brown "
+        "earth and exit off the right edge, blue water flowing right inside "
+        "them. No dead ends, no extra pipes."
+    ),
+    "wastewater": (
+        "A friendly wastewater treatment plant on a green riverside: a big "
+        "pipe arrives from the left with murky gray-blue water, pouring into "
+        "round open tanks fizzing with air bubbles, then calm rectangular "
+        "settling pools, and on the right a clear outflow pipe releases "
+        "clean sparkling water into a river along the right edge. Tidy cream "
+        "buildings with terracotta roofs behind, lawns and small trees."
     ),
 }
 

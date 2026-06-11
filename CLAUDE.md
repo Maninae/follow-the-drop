@@ -57,8 +57,10 @@ desktop); on phones, CSS clamps all in-scene elements to y ≤ 52%.
 
 The graph is a cycle: nature loop (cloud → rain/snow → land → river →
 lake/ocean → evaporation → cloud) plus a human loop (river/groundwater →
-treatment → tap → drain → river). Every scene must remain reachable and
-must have at least one `next` so the journey never dead-ends.
+treatment → tap → drain → wastewater → river, with a storm-runoff
+shortcut drain → river that is deliberately untreated — a real-world
+teaching point). Every scene must remain reachable and must have at
+least one `next` so the journey never dead-ends.
 
 ## Adding a scene
 
