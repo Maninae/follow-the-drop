@@ -127,20 +127,20 @@ const SCENES = {
     image: "assets/scenes/groundwater.png",
     body: "Shhh… you're in a secret world under the ground! You trickle down between rocks and sand until you join a huge hidden pool called an aquifer. It's dark, cool, and very quiet down here.",
     hotspots: [
-      { x: 12, y: 40, label: "Roots",
+      { x: 10, y: 38, label: "Roots",
         fact: "Tree roots reach down into the wet soil to drink. A big oak tree can drink a whole bathtub of water every day!" },
-      { x: 50, y: 80, label: "The aquifer",
+      { x: 38, y: 66, label: "The aquifer",
         fact: "An aquifer is water hiding in the spaces between underground rocks and sand. There is more fresh water underground than in all the world's rivers and lakes!" },
-      { x: 58, y: 22, label: "The well",
+      { x: 12, y: 19, label: "The well",
         fact: "People dig wells to reach the water underground. A pump pulls it up so families and farms can use it." }
     ],
     next: [
-      { to: "trees", label: "Get drunk up by tree roots", question: "Where do you go from down here?", x: 14, y: 12 },
-      { to: "river", label: "Bubble out of a spring", question: "", x: 88, y: 78 },
-      { to: "treatment", label: "Get pumped up a well", question: "", x: 75, y: 12 }
+      { to: "trees", label: "Get drunk up by tree roots", question: "Where do you go from down here?", x: 20, y: 48 },
+      { to: "river", label: "Bubble out of a spring", question: "", x: 64, y: 70 },
+      { to: "treatment", label: "Get pumped up a well", question: "", x: 27, y: 10 }
     ],
     back: [
-      { to: "meadow", label: "Soaking through the meadow", question: "How did you get here?", x: 38, y: 8 }
+      { to: "meadow", label: "Soaking through the meadow", question: "How did you get here?", x: 50, y: 8 }
     ]
   },
 
