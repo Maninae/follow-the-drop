@@ -10,8 +10,10 @@ Pages as-is.
 National-park interpretive sign × children's picture book. Warm cream
 paper panels with subtle grain, forest-ink text, clay-red accents.
 Fonts: "Baloo 2" (display) + "Andika" (body — designed for early
-readers). Scene art is layered painterly SVG, full-bleed behind the UI.
-Do not drift toward generic flat dashboards or dark techy themes.
+readers). Scene art is FLUX-generated gouache/watercolor PNGs
+(1536×768), full-bleed behind the UI; the `assets/scenes/*.svg` files
+are an earlier handcrafted fallback set, kept but unreferenced. Do not
+drift toward generic flat dashboards or dark techy themes.
 
 ## Module map
 
@@ -63,11 +65,12 @@ must have at least one `next` so the journey never dead-ends.
 1. Add the node to `SCENES` in `js/data.js` and its id to `SCENE_ORDER`
    (order controls the passport grid).
 2. Wire `next`/`back` links in both directions from neighboring scenes.
-3. Create `assets/scenes/<id>.svg` — 1536×768 viewBox, match the layered
-   painterly style of `rain.svg`, place hotspot elements at the
-   coordinates you declared (px = x% × 15.36, y% × 7.68). No text in art.
-4. Add a prompt to `build/regenerate-images.py` so the future PNG
-   repaint includes it.
+3. Generate `assets/scenes/<id>.png` (1536×768) with FLUX.1-schnell
+   using the house style prompt (see `build/regenerate-images.py` for
+   the prompt template). Describe element positions in the prompt, then
+   VERIFY: screenshot the rendered scene and adjust hotspot/sign
+   coordinates to where the model actually painted things.
+4. Add the prompt to `build/regenerate-images.py` so repaints include it.
 
 ## Writing voice
 
