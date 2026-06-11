@@ -47,26 +47,23 @@
 .gust-button:hover { transform: rotate(-1deg) scale(1.06); }
 .gust-icon { font-size: 17px; }
 
-/* ---------- Long-ago chip ---------- */
+/* ---------- Long-ago chip (lives in the story panel heading,
+     so it never covers anything in the scene) ---------- */
 
 .longago-chip {
-  position: fixed;
-  top: 70px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 18;
+  flex-shrink: 0;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(13px, 1vw, 17px);
+  font-size: clamp(12px, 0.95vw, 16px);
   color: #6b5616;
   background: linear-gradient(#f9ecc0, #efd98a);
   border: 2px solid #d9b94a;
   border-radius: 999px;
-  padding: 6px 16px;
-  box-shadow: 0 3px 12px rgba(20, 28, 18, 0.35);
+  padding: 5px 12px;
+  white-space: nowrap;
   transition: transform 0.15s ease, filter 0.15s ease;
 }
-.longago-chip:hover { transform: translateX(-50%) scale(1.08); filter: brightness(1.05); }
+.longago-chip:hover { transform: scale(1.08); filter: brightness(1.05); }
 
 /* ---------- Quest toast ---------- */
 
@@ -162,6 +159,15 @@
   stroke-width: 4;
   stroke-linecap: round;
   opacity: 0.75;
+}
+
+/* Trail between two places you've been, but not walked end-to-end
+   since the journal began — drawn as a faint solid path */
+.map-edge-known {
+  stroke: #a98f5f;
+  stroke-width: 3;
+  stroke-linecap: round;
+  opacity: 0.45;
 }
 
 .map-edge-hint {
@@ -260,6 +266,6 @@
 @media (max-width: 560px) {
   .gust-label { display: none; }
   .state-badge { display: none; }
-  .longago-chip { top: 62px; }
+  .longago-label { display: none; }
   .quest-list { grid-template-columns: 1fr; }
 }

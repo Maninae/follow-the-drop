@@ -10,6 +10,16 @@
   const visited = passportLoad();
   const journey = journalLoad();
 
+  // Migration: profiles stamped before the journal existed have visited
+  // scenes but an empty journey. Credit the odometer for each stamped
+  // scene (order is unknowable, so quests and edges start fresh).
+  if (journey.visits.length === 0 && visited.size > 0) {
+    visited.forEach(function (id) {
+      if (SCENES[id]) journey.years += (SCENES[id].residence || { years: 0 }).years;
+    });
+    journalSave(journey);
+  }
+
   const callbacks = {
     onNavigate: navigateTo,
     onHotspot: showFactCard

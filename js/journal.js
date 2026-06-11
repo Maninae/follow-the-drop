@@ -121,15 +121,35 @@ function journalRenderMap(journey, visited, currentSceneId) {
     });
   });
 
-  let parts = [];
-  // Edges: traversed = solid; visited->frontier = dashed hint
+  function pairKey(a, b) { return a < b ? a + ">" + b : b + ">" + a; }
+  const traveled = {};
   journey.edges.forEach(function (e) {
     const ids = e.split(">");
-    parts.push(mapEdge(ids[0], ids[1], "map-edge-traveled"));
+    traveled[pairKey(ids[0], ids[1])] = true;
   });
+
+  let parts = [];
+  const drawn = {};
+  // 1. Known trails: both ends visited. Faint if not yet walked since
+  //    the journal began; solid blue if actually traveled.
   visited.forEach(function (id) {
     [].concat(SCENES[id].next || [], SCENES[id].back || []).forEach(function (c) {
-      if (frontier[c.to]) parts.push(mapEdge(id, c.to, "map-edge-hint"));
+      if (!visited.has(c.to)) return;
+      const key = pairKey(id, c.to);
+      if (drawn[key]) return;
+      drawn[key] = true;
+      parts.push(mapEdge(id, c.to,
+        traveled[key] ? "map-edge-traveled" : "map-edge-known"));
+    });
+  });
+  // 2. Frontier hints: visited -> "?" neighbor, dashed.
+  visited.forEach(function (id) {
+    [].concat(SCENES[id].next || [], SCENES[id].back || []).forEach(function (c) {
+      if (!frontier[c.to]) return;
+      const key = pairKey(id, c.to);
+      if (drawn[key]) return;
+      drawn[key] = true;
+      parts.push(mapEdge(id, c.to, "map-edge-hint"));
     });
   });
   // Nodes

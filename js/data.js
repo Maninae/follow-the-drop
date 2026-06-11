@@ -136,8 +136,8 @@ const SCENES = {
     ],
     next: [
       { to: "groundwater", label: "Sink into the soil", question: "Which way will you go?", x: 52, y: 88 },
-      { to: "river", label: "Flow into the stream", question: "", x: 80, y: 60 },
-      { to: "beaver", label: "Meet the stream builders", question: "", x: 88, y: 74 }
+      { to: "river", label: "Flow down into the stream", question: "", x: 80, y: 60 },
+      { to: "beaver", label: "Go upstream to meet the builders!", question: "", x: 88, y: 74 }
     ],
     back: [
       { to: "rain", label: "Falling rain", question: "How did you get here?", x: 50, y: 10 }
