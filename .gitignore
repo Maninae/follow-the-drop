@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+
+# Python (for build/regenerate-images.py)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Local env / scratch
+.env
+.env.local
+*.log
+tmp/
+scratch/

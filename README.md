@@ -1,128 +1,79 @@
-# 💧 Follow the Drop
+<p align="center">
+  <a href="https://maninae.github.io/follow-the-drop/">
+    <img src="assets/og.png" alt="Follow the Drop — a water cycle adventure for kids" width="600">
+  </a>
+</p>
 
-**Be a drop of water.** A choose-your-own-adventure journey through the
-water cycle, made for young explorers (ages 5–8).
+<h1 align="center">💧 Follow the Drop</h1>
 
-**Play it:** https://maninae.github.io/follow-the-drop/
+<p align="center"><em>You are a drop of water. Where do you go next?</em></p>
 
-You start as a raindrop falling from a cloud. From there, every page asks
-the question kids actually ask: *where does the water go next?* Sink into
-the soil or ride the stream? Melt into a river or drift to the sea as an
-iceberg? Follow your drop down the kitchen drain and find out how it gets
-clean and comes back.
+<p align="center">
+  <a href="https://maninae.github.io/follow-the-drop/"><strong>▶ Play it in your browser</strong></a>
+</p>
 
-## What's inside
+---
 
-- **20 illustrated scenes** in a national-park-sign storybook style —
-  thunderstorms, glaciers, beaver dams, crystal caves, geysers, the open
-  ocean, and the human side too: the treatment plant, the kitchen tap,
-  the pipes under the street… and a trip through a kid who drinks you
-- **A directed graph, not a list** — choices are trail signs planted in
-  the scene itself; go forward ("where does it go?") or backward ("where
-  did it come from?"); the cycle never ends, just like the real one
-- **An Explorer's Journal** — a fog-of-war trail map that fills in as
-  you wander, quest badges (Shape Shifter, Deep Diver, Round and
-  Round…), a stamp for every place, and a drop odometer counting the
-  years your drop has been traveling
-- **Tap-to-discover hotspots** — glowing circles hide real facts, plus a
-  golden "⏳ Long ago…" story in every scene (the water you drink really
-  did rain on dinosaurs)
-- **Living scenes** — drifting rain, snow, mist, bubbles, and lightning
-  flashes; your drop's state (💧/❄️/💨) changes as you travel
-- **Read-aloud button** on every page for pre-readers, watery crossfade
-  transitions, browser back/forward retraces your journey, and a 🌬️
-  wind-gust button when you can't decide
+A choose-your-own-path adventure through the water cycle, made for
+first graders (and anyone curious how a raindrop ends up in a glacier,
+a beaver dam, or a kitchen sink). You start as a raindrop falling from
+a cloud. Every page asks the question kids actually ask: *where does
+the water go next?*
 
-## The map
+Sink into the soil or ride the stream? Melt into a river or drift to
+the sea as an iceberg? Take a wrong turn down the kitchen drain and
+find out how the water gets clean and comes back.
 
-Twenty scenes in one connected cycle — the nature loop, plus the human
-water loop that borrows from the river and gives it back
-(forward edges shown; most are also walkable backward in-game):
+## What kids do
 
-```mermaid
-flowchart TD
-    cloud["☁️ Inside a Cloud"]
-    rain["🌧️ Rain Falls!"]
-    snow["❄️ Snow on the Mountains"]
-    glacier["🧊 Rivers of Ice"]
-    meadow["🌼 Down on the Ground"]
-    groundwater["🪨 Hidden Water Underground"]
-    trees["🌲 Trees Drink Too"]
-    river["🏞️ Ride the River"]
-    lake["🦆 Resting in the Lake"]
-    ocean["🌊 The Big Blue Ocean"]
-    evaporation["☀️ Up, Up, Up!"]
-    treatment["🏭 Water-Cleaning Factory"]
-    tap["🚰 Water at Home"]
-    drain["🕳️ Down the Drain"]
-    wastewater["🫧 The Big Clean-Up"]
-    thunderstorm["⛈️ The Big Storm"]
-    beaver["🦫 The Beaver Dam"]
-    cave["💎 The Crystal Cave"]
-    geyser["🌋 The Geyser!"]
-    you["🧒 Inside You!"]
+- **Choose a path at every scene** — trail signs sit right on the thing
+  they name. Tap the soil to soak in, tap the stream to race downhill.
+- **Discover real facts** — glowing circles hide one-line facts ("a
+  raindrop falls about as fast as you ride a bike"), and every scene
+  has a golden *"Long ago…"* story (the water you drink really did
+  rain on dinosaurs).
+- **Earn stamps and badges** — an Explorer's Journal fills in a fog-of-war
+  map as you wander, hands out badges for journeys like *Shape Shifter*
+  and *Round and Round*, and ticks an odometer counting the years your
+  drop has been traveling.
+- **Read it themselves or hear it read** — short, first-grade sentences,
+  with a 🔊 read-aloud button on every page for pre-readers.
+- **Wander without dead ends** — the water cycle is a loop, so the
+  journey just keeps going. A 🌬️ wind-gust button shuffles the drop
+  somewhere new when no one can decide.
 
-    cloud -->|fall as rain| rain
-    cloud -->|freeze| snow
-    rain -->|splash| meadow
-    snow -->|pack into ice| glacier
-    snow -->|melt| river
-    glacier -->|melt| river
-    glacier -->|calve iceberg| ocean
-    meadow -->|soak in| groundwater
-    meadow -->|flow| river
-    groundwater -->|roots drink| trees
-    groundwater -->|spring| river
-    groundwater -->|well pump| treatment
-    trees -->|transpiration| cloud
-    river --> lake
-    river --> ocean
-    river -->|town intake| treatment
-    lake -->|sun| evaporation
-    lake -->|outlet| river
-    ocean -->|sun| evaporation
-    evaporation -->|condense| cloud
-    treatment --> tap
-    tap -->|down the sink| drain
-    tap -->|gulp!| you
-    you -->|sweat| evaporation
-    you -->|flushed!| drain
-    drain -->|sewer pipe| wastewater
-    drain -->|storm runoff, untreated| river
-    wastewater -->|cleaned, returned| river
-    cloud -->|grow| thunderstorm
-    thunderstorm -->|pour| rain
-    meadow --> beaver
-    beaver -->|over the dam| river
-    beaver -->|wetland soak| groundwater
-    groundwater -->|drip| cave
-    cave --> geyser
-    cave -->|underground stream| river
-    geyser -->|steam!| cloud
+## What kids learn
 
-    classDef nature fill:#e8f2e4,stroke:#3e6b4e,color:#2c4f39
-    classDef human fill:#fdeede,stroke:#c14f2c,color:#7a2f15
-    classDef sky fill:#e3f1f7,stroke:#1f7a99,color:#155e78
+Twenty illustrated scenes cover the **nature cycle** (cloud → rain or
+snow → land → river → lake or ocean → evaporation → cloud) and the
+**human water cycle** that borrows water from a river, cleans it at a
+treatment plant, sends it to the kitchen tap, and returns it through
+the sewer. Side adventures: a thunderstorm, a beaver dam, a crystal
+cave, a geyser, and a trip *inside a kid who drinks you*.
 
-    class rain,snow,glacier,meadow,groundwater,trees,river,lake,ocean,beaver,cave,geyser nature
-    class treatment,tap,drain,wastewater,you human
-    class cloud,evaporation,thunderstorm sky
-```
+> The full scene map is in [`docs/scene-graph.png`](docs/scene-graph.png).
 
-(Rendered copy: `docs/scene-graph.png`.)
+## Best for
 
-## Running locally
+Ages 6–8 (roughly first grade). Works on phones, tablets, and
+computers. No login, no ads, no tracking.
 
-It's a plain static site — no build, no dependencies:
+## How it's built
+
+Plain static site — HTML, CSS, vanilla JS, no build step and no
+dependencies. The scene art is AI-painted gouache (FLUX) over an
+earlier handcrafted SVG fallback set. Architecture notes for anyone
+poking around the code are in [`CLAUDE.md`](CLAUDE.md).
+
+Run it locally:
 
 ```
 python3 -m http.server -d . 8000
 ```
 
-then open http://localhost:8000.
+then open <http://localhost:8000>.
 
-## Project notes
+## License
 
-The scene graph and all copy live in `js/data.js`. Architecture details
-are in `CLAUDE.md`. The SVG scene art can optionally be repainted as
-AI-generated gouache illustrations with `build/regenerate-images.py`.
+[MIT](LICENSE) — share it with classrooms, remix it, repaint the
+scenes. If you build something with it, I'd love to see.
