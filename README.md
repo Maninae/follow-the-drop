@@ -39,8 +39,7 @@ find out how the water gets clean and comes back.
 - **Read it themselves or hear it read** — short, first-grade sentences,
   with a 🔊 read-aloud button on every page for pre-readers.
 - **Wander without dead ends** — the water cycle is a loop, so the
-  journey just keeps going. A 🌬️ wind-gust button shuffles the drop
-  somewhere new when no one can decide.
+  journey just keeps going.
 
 ## What kids learn
 

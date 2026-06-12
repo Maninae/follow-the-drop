@@ -31,7 +31,7 @@ drift toward generic flat dashboards or dark techy themes.
 | `js/journal.js` | Explorer's Journal: fog-of-war map (SVG), quest definitions + checks, journey log + odometer (localStorage) |
 | `js/effects.js` | Ambient particle layers per scene (rain/snow/mist/bubbles/sparkle/storm) |
 | `js/narrate.js` | Read-aloud via Web Speech API |
-| `css/journal.css` | Journal modal + tabs + map + quests, state badge, gust button, long-ago chip, toast |
+| `css/journal.css` | Journal modal + tabs + map + quests, state badge, long-ago chip, toast |
 | `css/effects.css` | Particle animations + lightning flash |
 | `assets/scenes/*.svg` | One illustration per scene, 1536×768 viewBox |
 | `build/regenerate-images.py` | Optional: repaint scenes as AI-generated gouache PNGs (see header) |

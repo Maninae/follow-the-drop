@@ -1,7 +1,6 @@
 /* ============================================================
    Explorer's Journal (map / quests / stamps), plus the small
-   companions: state badge, wind-gust button, long-ago chip,
-   quest toast.
+   companions: state badge, long-ago chip, quest toast.
    ============================================================ */
 
 /* ---------- Header companions ---------- */
@@ -27,25 +26,6 @@
 }
 .state-badge.state-ice { background: #eef6fb; color: #4a7d9e; border-color: #8fc1dd; }
 .state-badge.state-vapor { background: #f4f1e6; color: #8a7a4d; border-color: #cdbd8a; }
-
-.gust-button {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  background: var(--paper) var(--grain);
-  border: 2px solid var(--paper-edge);
-  border-radius: 12px;
-  box-shadow: 0 4px 14px rgba(20, 28, 18, 0.4);
-  padding: 7px 14px;
-  transform: rotate(-1deg);
-  transition: transform 0.15s ease;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 14px;
-  color: var(--river-deep);
-}
-.gust-button:hover { transform: rotate(-1deg) scale(1.06); }
-.gust-icon { font-size: 17px; }
 
 /* ---------- Long-ago chip (lives in the story panel heading,
      so it never covers anything in the scene) ---------- */
@@ -264,7 +244,6 @@
 /* ---------- Small screens ---------- */
 
 @media (max-width: 560px) {
-  .gust-label { display: none; }
   .state-badge { display: none; }
   .longago-label { display: none; }
   .quest-list { grid-template-columns: 1fr; }

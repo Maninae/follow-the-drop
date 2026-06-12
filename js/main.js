@@ -114,16 +114,6 @@
     );
   });
 
-  // ---------- Wind gust: whoosh down a random connected path ----------
-
-  document.getElementById("gust-button").addEventListener("click", function () {
-    const s = SCENES[currentSceneId];
-    const options = [].concat(s.next || [], s.back || []);
-    if (!options.length) return;
-    const pick = options[Math.floor(Math.random() * options.length)];
-    navigateTo(pick.to);
-  });
-
   // ---------- Journal modal + tabs ----------
 
   document.getElementById("passport-button").addEventListener("click", function () {
