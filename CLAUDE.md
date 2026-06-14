@@ -93,3 +93,54 @@ Short sentences. Sound effects ("Drip! Drop!", "Wheee!"). Second person
 — the reader IS the drop. Facts are real and concrete, never dumbed
 into vagueness. One idea per sentence. Read everything aloud in your
 head; a 6-year-old is listening.
+
+## Project status & open items (updated 2026-06-13)
+
+**Live:** maninae.github.io/follow-the-drop · **Repo:** github.com/Maninae/follow-the-drop
+**Deploy:** push to `main` → GitHub Pages rebuilds (~1–3 min; large PNG assets
+can lengthen the build). Verify with
+`gh api repos/Maninae/follow-the-drop/pages/builds/latest --jq .status` until
+`built`, then curl a changed asset.
+
+**Where things stand:** 20 scenes, all wired into the cycle. Explorer's
+Journal (fog-of-war map, 8 quests, stamps, drop odometer), per-scene state
+badge + ambient particle effects, gold "Long ago…" chip, crossfade
+transitions, read-aloud, hash history/deep links, mobile breakpoints.
+Public-share metadata (OG/Twitter unfurl, OG image, MIT license) is in.
+
+**Done recently (this session):**
+- Map trail audit — `journalRenderMap` now draws three edge classes
+  (traveled = solid blue, known = faint tan between any two visited
+  neighbors, hint = dashed to "?" frontier), deduped per pair. Fixed the
+  "floating nodes" bug for pre-journal profiles.
+- Odometer migration in `main.js` — credits residence years for scenes
+  stamped before the journal existed.
+- Long-ago ⏳ chip moved into the story-panel heading so it can never
+  occlude in-scene signs.
+- Meadow sign labels reworded ("Flow down into the stream" / "Go upstream
+  to meet the builders!").
+- **Removed the wind-gust button** entirely (button, handler, styles,
+  docs) — Owen didn't want randomized navigation.
+
+**Open items / next time (priority order):**
+1. **Drain scene art rework** (the main TODO). The current `assets/scenes/drain.png`
+   is the best of three FLUX seeds but the plumbing topology still isn't fully
+   coherent. **Replan the cutaway composition carefully before regenerating** —
+   Owen's bar: pipes/flow must read correctly (house cross-section: sink + toilet
+   → pipes → sewer; storm drain on the street → runoff). Sweep seeds, reject
+   incoherent plumbing. Use the local FLUX backend (see the `flux-image-gen`
+   skill: mflux 4-bit schnell, ~3 min/img, Mac-safe with `--mlx-cache-limit-gb 2`).
+2. **Fact-card popup positioning sweep** — placement is occasionally awkward;
+   walk every scene and nudge hotspot/sign x/y to match the painted art.
+3. **More scenes / interactivity** (Owen approved the list; **astronaut/space
+   VETOED**): fog/dew, waterfall, estuary, tide pools, desert, rain barrel,
+   fire truck, farm, swimming pool. Plus ideas: seasons toggle, ambient sound
+   loops, drop-avatar accessories.
+
+**Gotchas:**
+- Playwright headless forces `prefers-reduced-motion: reduce` (animations snap);
+  launch contexts with `reduced_motion="no-preference"` to test real transitions.
+- FLUX paints any capitalized words literally into the image — never capitalize
+  for emphasis in prompts; end prompts with "No text, no words, no letters".
+- img2img `--image-strength` HIGHER = closer to the original; it cannot ADD new
+  elements — use fresh text-to-image when the composition must change.
